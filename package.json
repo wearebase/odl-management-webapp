@@ -1,1 +1,9 @@
-{}
+{
+    "name": "odl-manager",
+    "description": "Open Device Lab Manager App",
+    "version": "0.0.1",
+    "private": true,
+    "dependencies": {
+        "express": "*"
+    }
+}
