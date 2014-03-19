@@ -13,3 +13,25 @@ results
 
 npm-debug.log
 node_modules
+
+# SASS
+*.sass-cache
+
+# OS or Editor folders
+.idea
+.DS_Store
+._*
+Thumbs.db
+.cache
+.project
+.settings
+.tmproj
+nbproject
+*.sublime-project
+*.sublime-workspace
+sftp-config.json
+.tags
+.tags_sorted_by_file
+_notes
+dwsync.xml
+.idea
