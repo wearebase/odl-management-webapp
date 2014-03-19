@@ -1,5 +1,12 @@
 language: node_js
 node_js:
-  - "0.10"
+- '0.10'
 notifications:
   slack: odl:vToYX9UxvZZxDNtSXYG6UzCT
+deploy:
+  provider: heroku
+  api_key:
+    secure: frRR3/LviVnOlg5JyC4+L4N5YIGJjqTCAsp+c16Ax85Rjts1ZaJJLrhvUgRIFnMJo49FA7NpEAhxy6gtLSP9ewGh7ofAPHLn/Eui0m23PkWHRqz3kBuYTSFcu4Fqh12q6HLtqu7jRNNzWyzhXbU7dlFu05UlubYXTs2+TSnf5WM=
+  app: odl
+  on:
+    repo: wearebase/odl-management-webapp
