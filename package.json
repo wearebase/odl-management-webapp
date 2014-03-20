@@ -15,6 +15,7 @@
         "node-rest-client": "*"
     },
     "scripts": {        
+        "start": "node src/odl.js", 
         "test": "mocha -R spec --recursive"
     }
 }

@@ -2,7 +2,7 @@ var rekuire = require('rekuire');
 var expect = rekuire('chai').expect;
 var setup = rekuire('test/functional/setup');
 
-describe("odl", function () {   
+describe("ODL Website", function () {   
 
     var app = setup();
 
