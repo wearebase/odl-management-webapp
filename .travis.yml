@@ -10,3 +10,9 @@ deploy:
   app: odl
   on:
     repo: wearebase/odl-management-webapp
+addons:
+  sauce_connect:
+    username: "rugbyhead"
+    access_key:
+      secure: "J/ObQE4OS0kt/lZhEL5VHDaPkrMQsi5BVqKMFOD9SG46xK5ATmMvaWC3NG9MNJWS72nWgfIgyKXN1rvsztyCzQC0pbMa7wYzivlyBfRuUKzkHKWJI0RjbP9hpOC+TSJppAq/TCpNz6xZaY2K1I5KXWrvsD3QbCsN7PykDhfIO30="
+
