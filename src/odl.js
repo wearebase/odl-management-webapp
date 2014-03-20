@@ -1,12 +1,8 @@
 var express = require('express');
 
-var app = express();
+var app = module.exports = express();
 
-app.get('/', function(req, res){
-  res.send('Hello ODL!!');
-});
-
-module.exports = app;
+require('./routes')(app);
 
 if (!module.parent) {
     app.listen(process.env.PORT || 3000, function() {

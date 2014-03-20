@@ -1,1 +1,1 @@
-web: node odl.js
+web: node src/odl.js

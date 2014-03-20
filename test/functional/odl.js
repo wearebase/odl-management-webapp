@@ -1,10 +1,12 @@
-var expect = require('chai').expect;
-var client = new (require('node-rest-client').Client)();
-var app = require('../../odl.js');
-var port = 9000;
+var rekuire = require('rekuire');
+var expect = rekuire('chai').expect;
 
 describe("odl", function () {   
-    
+
+	var client = new (rekuire('node-rest-client').Client)();
+	var app = rekuire('src/odl');
+	var port = 9000;
+
     beforeEach(function(done) {
     	this.server = app.listen(port, done);
   	});
