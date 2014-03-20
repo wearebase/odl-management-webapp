@@ -7,6 +7,12 @@
         "node": "0.10.21"
     },
     "dependencies": {
-        "express": "*"
+        "express": "*",
+        "mocha": "*",
+        "chai": "*",
+        "node-rest-client": "*"
+    },
+    "scripts": {        
+        "test": "mocha -R spec --recursive"
     }
 }
