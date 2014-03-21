@@ -12,10 +12,12 @@
         "express": "*",
         "mocha": "*",
         "chai": "*",
-        "node-rest-client": "*"
+        "node-rest-client": "*",
+        "config": "*",
+        "yaml": "*"
     },
     "scripts": {        
         "start": "node src/odl.js", 
-        "test": "mocha -R spec --recursive"
+        "test": "export NODE_ENV=test && mocha -R spec --recursive"
     }
 }
