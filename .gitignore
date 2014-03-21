@@ -35,3 +35,5 @@ sftp-config.json
 _notes
 dwsync.xml
 .idea
+
+config/runtime.json
