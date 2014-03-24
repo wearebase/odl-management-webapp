@@ -20,12 +20,8 @@ var odl = {
 		});		
 	},
 
-	stop: function(callback) {
-		console.log('odl stop');
-		this.server.close(function() {
-			console.log('server stop');
-			callback();
-		});
+	stop: function(callback) {		
+		this.server.close(callback);
 	}
 }
 
