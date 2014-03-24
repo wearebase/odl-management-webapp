@@ -1,24 +1,38 @@
+var config = require('config');
 var express = require('express');
 var app = express();
 var db = require('./db');
-var server;
 
-var odl = module.exports = {
-	start: function(port, callback) {
-		db(function(err) {
-			console.log('DB ' + err);
-			require('./routes')(app);
-			server = app.listen(port, function() {
-	    		console.log('ODL is on port %d!!', this.address().port);
-			});
-			callback(server);
+var odl = {
+	
+	start: function(port, callback) {		
+		
+		require('./routes')(app);
+		
+		this.server = app.listen(port);
+
+		this.server.on('listening', function() {			
+			db.start(callback);			
 		});
+
+		this.server.on('close', function() {
+			db.stop();
+		});		
 	},
+
 	stop: function(callback) {
-		server.close(done);
+		console.log('odl stop');
+		this.server.close(function() {
+			console.log('server stop');
+			callback();
+		});
 	}
 }
 
 if (!module.parent) {
-	odl.start(process.env.PORT || 3000);
+	odl.start(process.env.PORT || config.ODL.port || 3000, function() {
+		console.log('ODL is on port %d!!', odl.server.address().port);
+	});
+} else {
+	module.exports = odl;
 }

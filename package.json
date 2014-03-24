@@ -21,6 +21,6 @@
     },
     "scripts": {        
         "start": "node src/odl.js", 
-        "test": "export NODE_ENV=test && mocha -R spec --recursive"
+        "test": "export NODE_ENV=test && mocha -t 100000 -R spec --recursive"
     }
 }

@@ -23,21 +23,19 @@ module.exports = function(){
     mongodbFs.init({
         port: config.DB.port,
         mocks: mock,
-        fork: true
+        fork: true        
     });
 
     beforeEach(function(done) {
-        mongodbFs.start(function (err) {
-            odl(port, function(s) {
-                server = s;
-            });
+        mongodbFs.start(function(err) {
+            odl.start(port, done);
         });
     });
 
-    afterEach(function(done) {
-        mongodbFs.stop(function() {
-            server.close(done);
-        });
+    afterEach(function(done) {                
+        odl.stop(function() {                
+            mongodbFs.stop(done);
+        });        
     });
 
     return {
