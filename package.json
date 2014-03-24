@@ -10,9 +10,12 @@
         "rekuire": "*",
         "require-directory": "*",      
         "express": "*",
+        "mongoose": "*",
+        "mongodb-fs": "*",
         "mocha": "*",
         "chai": "*",
         "node-rest-client": "*",
+        "restler": "*",
         "config": "*",
         "yaml": "*"
     },

@@ -1,11 +1,24 @@
 var express = require('express');
+var app = express();
+var db = require('./db');
+var server;
 
-var app = module.exports = express();
-
-require('./routes')(app);
+var odl = module.exports = {
+	start: function(port, callback) {
+		db(function(err) {
+			console.log('DB ' + err);
+			require('./routes')(app);
+			server = app.listen(port, function() {
+	    		console.log('ODL is on port %d!!', this.address().port);
+			});
+			callback(server);
+		});
+	},
+	stop: function(callback) {
+		server.close(done);
+	}
+}
 
 if (!module.parent) {
-    app.listen(process.env.PORT || 3000, function() {
-        console.log('ODL is on port %d!!', this.address().port);
-    });
+	odl.start(process.env.PORT || 3000);
 }
