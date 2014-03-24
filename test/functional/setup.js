@@ -9,20 +9,9 @@ module.exports = function(){
     var port = 9000;
     var odl  = rekuire('src/odl');
 
-    mock[config.DB.name] = {
-        system: {indexes: []},
-        devices: [{
-                imei: '012345678912345'
-            },{
-                imei: '112345678912345' 
-            },{
-                imei: '212345678912345'
-        }]
-    };
-
     mongodbFs.init({
         port: config.DB.port,
-        mocks: mock,
+        mocks: rekuire('test/data'),
         fork: true        
     });
 
