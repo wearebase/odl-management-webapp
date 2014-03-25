@@ -3,8 +3,6 @@ module.exports = {
     	greeting: 'Hello ODL!!'
     },
 	DB: {
-		host: 'localhost',
-    	name: 'test',
-    	port: 27777
+		url: 'mongodb://localhost/odl-test'
     }
 }

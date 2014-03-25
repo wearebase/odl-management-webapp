@@ -1,30 +1,22 @@
 var rekuire = require('rekuire');
-var mongodbFs = require('mongodb-fs');
 var config = require('config');
+var db = rekuire('test/db');
+var odl  = rekuire('src/odl');
 
-module.exports = function(){
+module.exports = function(data){
     
-    var server;
-    var mock = {};
     var port = 9000;
-    var odl  = rekuire('src/odl');
-
-    mongodbFs.init({
-        port: config.DB.port,
-        mocks: rekuire('test/data'),
-        fork: true        
-    });
-
+    
     beforeEach(function(done) {
-        mongodbFs.start(function(err) {
-            odl.start(port, done);
+        odl.start(port, function() {
+            db.start(data, done);
         });
     });
 
     afterEach(function(done) {                
-        odl.stop(function() {                
-            mongodbFs.stop(done);
-        });        
+        odl.stop(function() {
+            db.stop(done);
+        });
     });
 
     return {

@@ -4,7 +4,7 @@ var setup = rekuire('test/functional/setup');
 
 describe("Device API", function () {   
 
-    var app = setup();
+    var app = setup(rekuire('test/data/devices'));
 
     it("should return all the devices when hit the device endpoint", function (done) {
         app.http.get(app.url('/device'), function(data, response) {
@@ -16,7 +16,7 @@ describe("Device API", function () {
             done();
         });           
     });
-
+    
     it("should create a new device and return it", function (done) {
         var args = {
             data: { imei: "312345678912345" },

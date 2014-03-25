@@ -1,7 +1,4 @@
-var config = require('config');
-
-var db = {
-    system: {indexes: []},
+module.exports = {
     devices: [{
             imei: '012345678912345'
         },{
@@ -10,5 +7,3 @@ var db = {
             imei: '212345678912345'
  	}]
 };
-
-module.exports[config.DB.name] = db;

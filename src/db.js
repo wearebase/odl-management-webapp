@@ -1,6 +1,5 @@
 var util = require('util');
 var mongoose = require('mongoose');
-var mongodbFs = require('mongodb-fs');
 var config = require('config').DB;
 
 var db = {
