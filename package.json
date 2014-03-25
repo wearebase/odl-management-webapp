@@ -11,7 +11,7 @@
         "require-directory": "*",      
         "express": "*",
         "mongoose": "*",
-        "mongodb-fs": "*",
+        "mongodb-fs": "https://github.com/4lejandrito/mongodb-fs/archive/0.0.13.tar.gz",
         "mocha": "*",
         "chai": "*",
         "node-rest-client": "*",
