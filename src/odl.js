@@ -3,6 +3,8 @@ var express = require('express');
 var app = express();
 var db = require('./db');
 
+app.use(express.bodyParser());
+
 var odl = {
 	
 	start: function(port, callback) {		

@@ -7,3 +7,9 @@ module.exports.getAllDevices = function(req, res) {
         res.send(err ? 404 : devices);
     });
 }
+
+module.exports.newDevice = function(req, res) {
+	Device.create(req.body, function(err, device) {
+        res.send(err ? 404 : device);
+    });
+}

@@ -17,4 +17,16 @@ describe("Device API", function () {
         });           
     });
 
+    it("should create a new device and return it", function (done) {
+        var args = {
+            data: { imei: "312345678912345" },
+            headers:{"Content-Type": "application/json"} 
+        };
+        app.http.post(app.url('/device'), args, function(data, response) {
+            expect(response.statusCode).to.equal(200);
+            expect(data).to.have.property('imei').and.equal('312345678912345');
+            done();
+        });           
+    });
+
 });    
