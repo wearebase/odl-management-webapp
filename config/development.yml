@@ -1,6 +1,0 @@
-ODL:
-    greeting: Hello ODL!! (this is development)
-DB:
-    host: 'sdjksjdjks'
-    name: 'development'
-    port: 27777
