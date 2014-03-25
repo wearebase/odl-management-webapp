@@ -7,11 +7,11 @@ app.use(express.bodyParser());
 
 var odl = {
 	
-	start: function(port, callback) {		
+	start: function(callback) {		
 		
 		require('./routes')(app);
 		
-		this.server = app.listen(port);
+		this.server = app.listen(config.ODL.port);
 
 		this.server.on('listening', function() {			
 			db.start(callback);			
@@ -28,7 +28,7 @@ var odl = {
 }
 
 if (!module.parent) {
-	odl.start(process.env.PORT || config.ODL.port || 3000, function() {
+	odl.start(function() {
 		console.log('ODL is on port %d!!', odl.server.address().port);
 	});
 } else {

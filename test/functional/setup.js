@@ -5,10 +5,8 @@ var odl  = rekuire('src/odl');
 
 module.exports = function(data){
     
-    var port = 9000;
-    
     beforeEach(function(done) {
-        odl.start(port, function() {
+        odl.start(function() {
             db.start(data, done);
         });
     });
@@ -21,7 +19,7 @@ module.exports = function(data){
 
     return {
         url: function(path) {
-            return 'http://localhost:' + port + path;
+            return 'http://localhost:' + config.ODL.port + path;
         },
         http: new (require('node-rest-client').Client)({
             mimetypes:{

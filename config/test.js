@@ -1,5 +1,6 @@
 module.exports = {
 	ODL: {
+		port: 9000,
     	greeting: 'Hello ODL!!'
     },
 	DB: {
