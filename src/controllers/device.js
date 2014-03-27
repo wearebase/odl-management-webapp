@@ -23,3 +23,9 @@ module.exports.newDevice = function(req, res) {
 		}
 	});
 }
+
+module.exports.getDeviceByImei = function(req, res) {
+	Device.findOne({imei: req.param('imei')}, function(err, device) {
+		res.send(device ? device: 404);
+	});
+}

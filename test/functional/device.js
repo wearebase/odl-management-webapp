@@ -51,4 +51,19 @@ describe("Device API", function () {
         });           
     });
 
+    it("should query by imei", function (done) {
+        app.http.get(app.url('/device/012345678912345'), function(data, response) {
+            expect(response.statusCode).to.equal(200);
+            expect(data).to.have.property('imei').and.equal('012345678912345');
+            done();
+        });           
+    });
+
+    it("should complain if we query by a nonexistent imei", function (done) {
+        app.http.get(app.url('/device/whatever'), function(data, response) {
+            expect(response.statusCode).to.equal(404);
+            done();
+        });           
+    });
+
 });    
