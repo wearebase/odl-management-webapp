@@ -14,7 +14,8 @@
         "mongoose": "*",
         "mocha": "*",
         "chai": "*",
-        "node-rest-client": "*"
+        "node-rest-client": "*",
+        "async": "*"
     },
     "scripts": {        
         "start": "node src/odl.js", 

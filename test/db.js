@@ -1,21 +1,23 @@
 var rekuire = require('rekuire');
 var config = require('config');
 var mongoose = require('mongoose');
+var async = require('async');
 
 module.exports = {
 
     start: function(collections, cb) {
         var db = mongoose.connection.db;
         db.dropDatabase(function() {
+            var functions = [];
             for (var name in collections) {
-                db.createCollection(name, function(err, collection) {
-                    collection.insert(collections[name], function() {
+                functions.push(function(cb) {
+                    db.createCollection(name, function(err, collection) {
+                        collection.insert(collections[name], cb);
                     });
                 });
             }
+            async.parallel(functions, cb);
         });
-
-        setTimeout(cb, 1000);
     },
 
     stop: function(cb) {
