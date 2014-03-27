@@ -25,6 +25,8 @@ describe("Device API", function () {
         app.http.post(app.url('/device'), args, function(data, response) {
             expect(response.statusCode).to.equal(200);
             expect(data).to.have.property('imei').and.equal('312345678912345');
+            expect(data).to.have.property('_id');
+            expect(data).to.have.property('modified');
             done();
         });           
     });
