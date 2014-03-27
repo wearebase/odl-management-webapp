@@ -15,6 +15,7 @@
         "mocha": "*",
         "chai": "*",
         "node-rest-client": "*",
+        "request": "*",
         "async": "*",
         "underscore": "*"
     },

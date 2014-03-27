@@ -66,4 +66,12 @@ describe("Device API", function () {
         });           
     });
 
+    it("should provide a QR endpoint", function (done) {
+        app.http.get(app.url('/device/012345678912345/qr'), function(data, response) {            
+            expect(response.statusCode).to.equal(200);
+            expect(response.headers['content-type']).to.equal('image/png');            
+            done();
+        });           
+    });
+
 });    
