@@ -15,7 +15,8 @@
         "mocha": "*",
         "chai": "*",
         "node-rest-client": "*",
-        "async": "*"
+        "async": "*",
+        "underscore": "*"
     },
     "scripts": {        
         "start": "node src/odl.js", 
