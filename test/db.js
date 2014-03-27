@@ -10,7 +10,7 @@ module.exports = {
         var functions = [];
         for (var name in collections) {
             functions.push(function(cb) {
-                db.createCollection(name, function(err, collection) {
+               db.collection(name, function(err, collection) {
                     collection.remove({}, function() {
                         collection.insert(collections[name], cb);
                     });
