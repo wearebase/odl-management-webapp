@@ -1,6 +1,7 @@
 language: node_js
 node_js:
 - '0.10.21'
+services: mongodb
 notifications:
   slack: odl:vToYX9UxvZZxDNtSXYG6UzCT
 deploy:
