@@ -51,6 +51,20 @@ describe("Device API", function () {
         });           
     });
 
+    it("should delete a device by imei", function (done) {
+        app.http.delete(app.url('/device/012345678912345'), function(data, response) {
+            expect(response.statusCode).to.equal(200);
+            expect(data).to.have.property('imei').and.equal('012345678912345');
+
+            app.http.get(app.url('/device'), function(data, response) {
+                expect(data).to.have.length(2);
+                expect(data[0]).to.have.property('imei').and.equal('112345678912345');
+                expect(data[1]).to.have.property('imei').and.equal('212345678912345');
+                done();
+            });
+        });           
+    });
+
     it("should query by imei", function (done) {
         app.http.get(app.url('/device/012345678912345'), function(data, response) {
             expect(response.statusCode).to.equal(200);

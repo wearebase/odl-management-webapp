@@ -26,6 +26,18 @@ module.exports.newDevice = function(req, res) {
 	});
 }
 
+module.exports.deleteDeviceByImei = function(req, res) {
+	Device.findOne({imei: req.param('imei')}, function(err, device) {
+		if (device) {
+			device.remove(function (err, device) {
+				res.send(err ? 404 : device);
+			});
+		} else {
+	    	res.send(404);
+		}
+	});
+}
+
 module.exports.getDeviceByImei = function(req, res) {
 	Device.findOne({imei: req.param('imei')}, function(err, device) {
 		res.send(device ? device: 404);
