@@ -4,7 +4,7 @@ var setup = rekuire('test/functional/setup');
 
 describe("Device API", function () {   
 
-    var app = setup(rekuire('test/data/devices'));
+    var app = setup(rekuire('test/data/devices'), rekuire('test/data/mappings'));
 
     it("should retrieve all the devices ordered by imei", function (done) {
         app.http.get(app.url('/device'), function(data, response) {

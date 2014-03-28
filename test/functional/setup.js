@@ -1,19 +1,24 @@
 var rekuire = require('rekuire');
 var config = require('config');
-var db = rekuire('test/db');
+var db = rekuire('test/util/db');
 var odl  = rekuire('src/odl');
+var mapper = rekuire('test/util/mapper');
 
-module.exports = function(data){
+module.exports = function(data, mappings){
     
     beforeEach(function(done) {
-        odl.start(function() {
-            db.start(data, done);
+        mapper.start(mappings, function() {
+            odl.start(function() {
+                db.start(data, done);
+            });
         });
     });
 
     afterEach(function(done) {                
         odl.stop(function() {
-            db.stop(done);
+            db.stop(function() {
+                mapper.stop(done);
+            });
         });
     });
 
@@ -21,12 +26,7 @@ module.exports = function(data){
         url: function(path) {
             return 'http://localhost:' + config.ODL.port + path;
         },
-        http: new (require('node-rest-client').Client)({
-            mimetypes:{
-                json:["application/json","application/json; charset=utf-8"],
-                xml:["application/xml","application/xml; charset=utf-8"]
-            }
-        })
+        http: rekuire('src/util/rest')
     };
 
 };

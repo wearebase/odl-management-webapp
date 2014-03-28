@@ -1,3 +1,5 @@
+var mapperPort = 19002;
+
 module.exports = {
     ODL: {
         port: 9000,
@@ -5,5 +7,13 @@ module.exports = {
     },
     DB: {
         url: 'mongodb://localhost/odl-test'
+    },
+    GMAPI: {
+    	url: 'http://localhost:' + mapperPort + '/globalmine-server/v2/',
+    	key: 'k',
+    	secret: 's'
+    },
+    MAPPER: {
+    	port: mapperPort
     }
 }
