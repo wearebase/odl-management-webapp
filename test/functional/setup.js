@@ -2,12 +2,12 @@ var rekuire = require('rekuire');
 var config = require('config');
 var db = rekuire('test/util/db');
 var odl  = rekuire('src/odl');
-var mapper = rekuire('test/util/mapper');
+var mapper = require('mean-mock');
 
 module.exports = function(data, mappings){
     
     beforeEach(function(done) {
-        mapper.start(mappings, function() {
+        mapper.start(config.MAPPER.port, mappings, function() {
             odl.start(function() {
                 db.start(data, done);
             });

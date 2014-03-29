@@ -5,5 +5,8 @@ module.exports = {
     },
     DB: {
         url: 'mongodb://localhost/odl'
+    },
+    QR: {
+        url: 'http://api.qrserver.com/v1/create-qr-code/'
     }
 }

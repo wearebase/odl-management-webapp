@@ -62,7 +62,7 @@ module.exports.getDeviceByImei = function(req, res) {
     });
 }
 
-module.exports.getQRCode = function(req, res) { 
-    var newurl = util.format('http://api.qrserver.com/v1/create-qr-code/?data=%s&size=%s', req.param('imei'), '100x100'); 
+module.exports.getQRCode = function(req, res) {     
+    var newurl = util.format(config.QR.url + '?data=%s&size=%s', req.param('imei'), '100x100'); 
     request(newurl).pipe(res);
 }
