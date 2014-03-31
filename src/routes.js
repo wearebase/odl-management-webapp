@@ -7,4 +7,6 @@ module.exports = function(app) {
     app.del ('/device/:imei'   , controllers.device.deleteDeviceByImei);
     app.get ('/device/:imei'   , controllers.device.getDeviceByImei);
     app.get ('/device/:imei/qr', controllers.device.getQRCode);
+    app.post('/check/in/:imei' , controllers.check.checkIn);
+    app.post('/check/out/:imei', controllers.check.checkOut);
 }

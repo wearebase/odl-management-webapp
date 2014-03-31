@@ -1,0 +1,63 @@
+var rekuire = require('rekuire');
+var expect = rekuire('chai').expect;
+var setup = rekuire('test/functional/setup');
+
+describe("Booking API", function () {
+
+    var app = setup(rekuire('test/data/devices'));
+
+    it("should check a phone in", function (done) {
+        app.http.post(app.url('/check/in/012345678912345'), function(device, response) {
+            expect(response.statusCode).to.equal(200);
+            expect(device).to.have.property('imei').and.equal('012345678912345');
+            expect(device).to.have.property('checkedIn').and.equal(true);
+            done();
+        });
+    });
+
+    it("shouldn't check a phone in that is already checked in", function (done) {
+        app.http.post(app.url('/check/in/012345678912345'), function(device, response) {
+            expect(response.statusCode).to.equal(200);
+            expect(device).to.have.property('imei').and.equal('012345678912345');
+            expect(device).to.have.property('checkedIn').and.equal(true);
+
+            app.http.post(app.url('/check/in/012345678912345'), function(device, response) {
+                expect(response.statusCode).to.equal(409);
+                expect(device).to.have.property('imei').and.equal('012345678912345');
+                expect(device.checkedIn).to.equal(true);
+                done();
+            });
+        });
+    });
+
+    it("should check a phone out that was already checked in", function (done) {
+        app.http.post(app.url('/check/in/012345678912345'), function(device, response) {
+            expect(response.statusCode).to.equal(200);
+            expect(device).to.have.property('imei').and.equal('012345678912345');
+            expect(device).to.have.property('checkedIn').and.equal(true);
+
+            app.http.post(app.url('/check/out/012345678912345'), function(device, response) {
+                expect(response.statusCode).to.equal(200);
+                expect(device).to.have.property('imei').and.equal('012345678912345');
+                expect(device).to.have.property('checkedIn').and.equal(false);
+
+                app.http.post(app.url('/check/in/012345678912345'), function(device, response) {
+                    expect(response.statusCode).to.equal(200);
+                    expect(device).to.have.property('imei').and.equal('012345678912345');
+                    expect(device).to.have.property('checkedIn').and.equal(true);
+                    done();
+                });
+            });
+        });
+    });
+
+    it("shouldn't check a phone out that wasn't checked in", function (done) {
+        app.http.post(app.url('/check/out/012345678912345'), function(device, response) {
+            expect(response.statusCode).to.equal(409);
+            expect(device).to.have.property('imei').and.equal('012345678912345');
+            expect(device).to.have.property('checkedIn').and.equal(false);
+            done();
+        });
+    });
+
+});
