@@ -60,4 +60,11 @@ describe("Booking API", function () {
         });
     });
 
+    it("shouldn't check in a phone that doesen't exist", function (done) {
+        app.http.post(app.url('/check/in/012345678912432'), function(data, response) {
+            expect(response.statusCode).to.equal(404);
+            done();
+        });
+    });
+
 });

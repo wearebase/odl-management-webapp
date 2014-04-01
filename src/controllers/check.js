@@ -4,7 +4,7 @@ var Device = rekuire('src/models/device');
 
 module.exports.checkIn = function(req, res) {
     Device.findOne({imei: req.param('imei')}, function(err, device) {
-        if (err) {
+        if (err || !device) {
             res.send(404);
         } else {
             if (device.checkedIn) {
