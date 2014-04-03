@@ -9,4 +9,8 @@ module.exports = function(app) {
     app.get ('/device/:imei/qr', controllers.device.getQRCode);
     app.post('/check/in/:imei' , controllers.check.checkIn);
     app.post('/check/out/:imei', controllers.check.checkOut);
+
+    app.get('/user'             , controllers.user.getAllUsers);
+    app.post('/user'            , controllers.user.newUser);
+   // app.del ('/user'            , controllers.user.deleteUserByEmail);
 }
