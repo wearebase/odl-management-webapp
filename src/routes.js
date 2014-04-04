@@ -12,5 +12,6 @@ module.exports = function(app) {
 
     app.get('/user'             , controllers.user.getAllUsers);
     app.post('/user'            , controllers.user.newUser);
-    app.del ('/user'           , controllers.user.deleteUserByEmail);
+    app.del ('/user/:userName'  , controllers.user.deleteUserByUsername);
+    app.get ('/user/:userName'  , controllers.user.getUserByUserName);
 }
