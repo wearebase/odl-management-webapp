@@ -65,6 +65,13 @@ describe("Device API", function () {
         });           
     });
 
+    it("should complain when deleting a non existing device", function (done) {
+        app.http.delete(app.url('/device/012345678912432'), function(data, response) {
+            expect(response.statusCode).to.equal(404);
+            done();            
+        });           
+    });
+
     it("should query by imei", function (done) {
         app.http.get(app.url('/device/012345678912345'), function(data, response) {
             expect(response.statusCode).to.equal(200);

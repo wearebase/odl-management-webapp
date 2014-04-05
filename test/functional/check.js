@@ -60,8 +60,15 @@ describe("Booking API", function () {
         });
     });
 
-    it("shouldn't check in a phone that doesen't exist", function (done) {
+    it("shouldn't check in a phone that doesn't exist", function (done) {
         app.http.post(app.url('/check/in/012345678912432'), function(data, response) {
+            expect(response.statusCode).to.equal(404);
+            done();
+        });
+    });
+
+    it("shouldn't check out a phone that doesn't exist", function (done) {
+        app.http.post(app.url('/check/out/012345678912432'), function(data, response) {
             expect(response.statusCode).to.equal(404);
             done();
         });
