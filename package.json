@@ -15,6 +15,7 @@
     "mocha": "*",
     "chai": "*",
     "istanbul": "*",
+    "node-inspector": "*",
     "mean-mock": "*",
     "node-rest-client": "*",
     "request": "*",
@@ -23,6 +24,7 @@
   },
   "scripts": {
     "start": "node src/odl.js",
+    "debug": "node-debug src/odl.js",
     "test": "export NODE_ENV=test && mocha -R spec --recursive",    
     "coverage": "export NODE_ENV=test && ./node_modules/istanbul/lib/cli.js cover ./node_modules/mocha/bin/_mocha -- -R spec --recursive"
   }
