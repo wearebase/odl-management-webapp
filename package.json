@@ -1,27 +1,29 @@
 {
-    "name": "odl-manager",
-    "description": "Open Device Lab Manager App",
-    "version": "0.0.1",
-    "private": true,
-    "engines": {
+  "name": "odl-manager",
+  "description": "Open Device Lab Manager App",
+  "version": "0.0.1",
+  "private": true,
+  "engines": {
     "node": "0.10.21"
-    },
-    "dependencies": {
-        "config": "*",
-        "rekuire": "*",
-        "require-directory": "*",      
-        "express": "*",
-        "mongoose": "*",
-        "mocha": "*",
-        "chai": "*",
-        "mean-mock": "*",
-        "node-rest-client": "*",
-        "request": "*",
-        "async": "*",
-        "underscore": "*"
-    },
-    "scripts": {        
-        "start": "node src/odl.js", 
-        "test": "export NODE_ENV=test && mocha -R spec --recursive"
-    }
+  },
+  "dependencies": {
+    "config": "*",
+    "rekuire": "*",
+    "require-directory": "*",
+    "express": "*",
+    "mongoose": "*",
+    "mocha": "*",
+    "chai": "*",
+    "istanbul": "*",
+    "mean-mock": "*",
+    "node-rest-client": "*",
+    "request": "*",
+    "async": "*",
+    "underscore": "*"    
+  },
+  "scripts": {
+    "start": "node src/odl.js",
+    "test": "export NODE_ENV=test && mocha -R spec --recursive",    
+    "coverage": "export NODE_ENV=test && ./node_modules/istanbul/lib/cli.js cover ./node_modules/mocha/bin/_mocha -- -R spec --recursive"
+  }
 }
