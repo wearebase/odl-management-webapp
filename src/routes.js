@@ -1,3 +1,5 @@
+var rekuire = require('rekuire');
+var config = require('config');
 var controllers = require('require-directory')(module, 'src/controllers');
 
 module.exports = function(app) {
@@ -10,8 +12,12 @@ module.exports = function(app) {
     app.post('/check/in/:imei' , controllers.check.checkIn);
     app.post('/check/out/:imei', controllers.check.checkOut);
 
-    app.get('/user'             , controllers.user.getAllUsers);
+    app.get ('/user'            , controllers.user.getAllUsers);
     app.post('/user'            , controllers.user.newUser);
     app.del ('/user/:userName'  , controllers.user.deleteUserByUsername);
     app.get ('/user/:userName'  , controllers.user.getUserByUserName);
+
+    if (config.DEV) {
+        require('mean-mock').apply(app, rekuire('src/data/mappings'));
+    }
 }
