@@ -1,7 +1,7 @@
 var config = require('config');
 var express = require('express');
 var app = express();
-var db = require('./db');
+var db = require('./util/db');
 
 app.use(express.bodyParser());
 
