@@ -18,6 +18,6 @@ module.exports = function(app) {
     app.get ('/user/:userName'  , controllers.user.getUserByUserName);
 
     if (config.DEV) {
-        require('mean-mock').apply(app, rekuire('src/data/mappings'));
+        require('mean-mock').mapper.apply(app, rekuire('src/data/mappings'));
     }
 }

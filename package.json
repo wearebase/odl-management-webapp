@@ -16,7 +16,7 @@
         "chai": "1.9.1",
         "istanbul": "0.2.7",
         "node-inspector": "0.7.2",
-        "mean-mock": "1.0.4",
+        "mean-mock": "1.1.1",
         "node-rest-client": "0.8.3",
         "request": "2.34.0",
         "async": "0.7.0",
