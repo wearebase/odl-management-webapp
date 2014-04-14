@@ -1,6 +1,6 @@
 var rekuire = require('rekuire');
 var expect = rekuire('chai').expect;
-var setup = rekuire('test/functional/setup');
+var setup = rekuire('test/util/setup-functional');
 
 describe("ODL Website", function () {   
 
