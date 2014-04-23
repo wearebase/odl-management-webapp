@@ -1,0 +1,28 @@
+td, th {
+    cursor: pointer;
+    text-align: center;
+    vertical-align: middle !important;
+}
+
+img {
+	width: 30px;
+}
+
+.table {
+	height: 300px;
+	overflow: auto;
+}
+
+.modal .well {
+    height: 200px;
+    overflow: scroll;
+}
+
+.modal-body {
+	height: 400px;
+	overflow-y: auto;
+}
+
+.modal img {
+	width: 120px;
+}
