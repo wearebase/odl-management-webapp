@@ -10,7 +10,7 @@
         "config": "0.4.35",
         "rekuire": "0.1.5",
         "require-directory": "1.2.0",
-        "express": "4.0.0",
+        "express": "3.5.1",
         "mongoose": "3.8.8",
         "mocha": "1.18.2",
         "chai": "1.9.1",
