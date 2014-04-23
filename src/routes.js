@@ -17,6 +17,8 @@ module.exports = function(app) {
     app.del ('/user/:userName'  , controllers.user.deleteUserByUsername);
     app.get ('/user/:userName'  , controllers.user.getUserByUserName);
 
+    app.use('/public', require('express').static('src/public'));
+
     if (config.DEV) {
         require('mean-mock').mapper.apply(app, rekuire('src/data/mappings'));
     }

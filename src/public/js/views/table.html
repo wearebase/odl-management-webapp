@@ -1,0 +1,28 @@
+<div class="container" ng-controller="topics">
+
+    <h3>
+        <i class="fa fa-bookmark"> </i> Topics
+    </h3>
+
+    <table id="topics" class="table table-bordered table-hover">
+        <thead>
+            <tr>
+                <th ng-click="sort('name')"><i class="fa fa-tag"></i> Name</th>
+                <th ng-click="sort('listeners.length')"><i class="fa fa-group"></i> Number of subscribers</th>
+                <th ng-click="sort('numberOfMessages')"><i class="fa fa-envelope"></i> Number of messages</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-click="select(topic)" data-toggle="modal" data-target="#modal" id="topic-{{topic.name}}" ng-repeat="topic in status.topics">
+                <td>{{topic.name}}</td>
+                <td><span class="label label-default">{{topic.listeners.length}}</span></td>
+                <td><span class="label label-default">{{topic.numberOfMessages}}</span></td>
+            </tr>
+        </tbody>
+    </table>
+
+    <p class="text-center text-muted">
+        <small>Last status: {{lastModified | date:'mediumTime'}}</small>
+    </p>
+
+</div>
