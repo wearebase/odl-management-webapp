@@ -26,5 +26,9 @@ angular.module('odl').controller('devices', function($scope, $rootScope, $filter
         server.newDevice($scope.imei).success($scope.refresh);
     }
 
+    $rootScope.$on('refresh', function() {
+        $scope.refresh();
+    });
+
     $scope.refresh();
 });

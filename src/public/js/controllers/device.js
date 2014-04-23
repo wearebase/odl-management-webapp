@@ -1,6 +1,8 @@
-angular.module('odl').controller('device', function($scope, $rootScope, $filter, $http, $element, server) {
-    $scope.post = function() {
-        server.broadcast($scope.topic.name, $scope.message);
+angular.module('odl').controller('device', function($scope, $rootScope, server) {
+    $scope.delete = function() {
+        server.deleteDevice($scope.device.imei).success(function() {
+            $rootScope.$emit('refresh');
+        });
     }
 
     $rootScope.$on('device', function(event, device) {

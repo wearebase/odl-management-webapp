@@ -6,4 +6,8 @@ angular.module('odl').service('server', function ($rootScope, $http) {
     this.newDevice = function(imei) {
         return $http.post('/device', {imei: imei});
     } 
+
+    this.deleteDevice = function(imei) {
+        return $http.delete('/device/' + imei);
+    } 
 });
