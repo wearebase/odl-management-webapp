@@ -12,15 +12,19 @@
         "require-directory": "1.2.0",
         "express": "3.5.1",
         "mongoose": "3.8.8",
-        "mocha": "1.18.2",
-        "chai": "1.9.1",
-        "istanbul": "0.2.7",
-        "node-inspector": "0.7.3",
-        "mean-mock": "1.1.1",
         "node-rest-client": "0.8.6",
         "request": "2.34.0",
         "async": "0.7.0",
-        "underscore": "1.6.0"
+        "underscore": "1.6.0",
+        "qrcode": "*",
+        "canvas": "1.0.4"
+    },
+    "devDependencies": {
+        "mocha": "1.18.2",
+        "chai": "1.9.1",
+        "istanbul": "0.2.7",
+        "mean-mock": "1.1.1",
+        "node-inspector": "0.7.3"        
     },
     "scripts": {
         "start": "node src/odl.js",
@@ -28,4 +32,4 @@
         "test": "export NODE_ENV=test && mocha -R spec --recursive",
         "coverage": "export NODE_ENV=test && ./node_modules/istanbul/lib/cli.js cover ./node_modules/mocha/bin/_mocha -- -R spec --recursive"
     }
-}
+}   

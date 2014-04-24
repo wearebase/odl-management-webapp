@@ -5,6 +5,8 @@ var _ = require('underscore');
 var rest = rekuire('src/util/rest');
 var Device = rekuire('src/models/device');
 var request = require('request');
+var Canvas = new require('canvas');
+var qrcode = require('qrcode');
 
 module.exports.getAllDevices = function(req, res) {
     Device.find({}).sort({imei: 1}).exec(function(err, devices) {
@@ -62,7 +64,31 @@ module.exports.getDeviceByImei = function(req, res) {
     });
 }
 
-module.exports.getQRCode = function(req, res) {     
-    var newurl = util.format(config.QR.url + '?data=%s&size=%s', req.param('imei'), '100x100'); 
-    request(newurl).pipe(res);
+module.exports.getQRCode = function(req, res) {
+    var margin = parseInt(req.param('margin') || '0');
+    qrcode.draw(req.param('imei'), {scale: 10, margin: margin}, function(error, canvas) {
+        ctx = canvas.getContext('2d');
+
+        var rect = {
+            center: {
+                x: canvas.width / 2,
+                y: canvas.height / 2
+            },
+            width: (canvas.width - margin * 10) / 3,
+            height: (canvas.height - margin * 10) / 3
+        };
+
+        ctx.beginPath();
+        ctx.rect(rect.center.x - rect.width / 2, rect.center.y - rect.height / 2, rect.width, rect.height);
+        ctx.fillStyle = 'white';
+        ctx.fill();
+        
+        require('fs').readFile(__dirname + '/../data/wds.png', function(err, data) {
+            var img = new Canvas.Image;
+            img.src = data;
+            ctx.drawImage(img, rect.center.x - rect.width / 2, rect.center.y - rect.height / 2, rect.width, rect.height);
+            res.type('jpg');
+            canvas.jpegStream({bufsize: 4096, quality: 100, progressive: false}).pipe(res);
+        });        
+    });
 }
