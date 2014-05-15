@@ -70,12 +70,21 @@ module.exports.getQRCode = function(req, res) {
     qrcode.draw(req.param('imei'), {scale: 10, margin: margin}, function(error, canvas) {
         ctx = canvas.getContext('2d');
 
+        if (req.param('print')) {
+            ctx.font = 'italic 20pt Calibri';
+            ctx.fillStyle = 'black';
+            ctx.textAlign = 'center';
+            //ctx.rotate(90*Math.PI/180);
+            ctx.fillText(req.param('imei'), canvas.width / 2, canvas.height - 10);
+            //ctx.rotate(-90*Math.PI/180);
+        }
+
         function sendImage() {
             res.type('jpg');
             canvas.jpegStream({bufsize: 4096, quality: 100, progressive: false}).pipe(res);
         }
 
-        var brand = req.param('brand');
+        var brand = req.param('brand') || 'wds';
 
         var brands = {
             wds: __dirname + '/../data/wds.gif',
@@ -101,6 +110,7 @@ module.exports.getQRCode = function(req, res) {
                 var img = new Canvas.Image;
                 img.src = data;
                 ctx.drawImage(img, rect.center.x - rect.width / 2 + 5, rect.center.y - rect.height / 2 + 5, rect.width - 10, rect.height - 10);
+
                 sendImage();
             });        
         } else {

@@ -26,3 +26,7 @@ img {
 .modal img {
 	width: 120px;
 }
+
+.modal .qr {
+	width: 200px;
+}
