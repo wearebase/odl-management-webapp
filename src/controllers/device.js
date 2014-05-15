@@ -84,7 +84,7 @@ module.exports.getQRCode = function(req, res) {
             canvas.jpegStream({bufsize: 4096, quality: 100, progressive: false}).pipe(res);
         }
 
-        var brand = req.param('brand') || 'wds';
+        var brand = req.param('brand');
 
         var brands = {
             wds: __dirname + '/../data/wds.gif',
