@@ -21,11 +21,5 @@ module.exports = {
                 category: "ApplicationFrameworks"
             }
         ]
-    },
-    "/v1/create-qr-code": {
-        headers: {
-            'Content-Type': 'image/png'
-        },
-        data: "imagecontent"
     }
 }

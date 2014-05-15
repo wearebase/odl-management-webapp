@@ -7,6 +7,7 @@ var Device = rekuire('src/models/device');
 var request = require('request');
 var Canvas = new require('canvas');
 var qrcode = require('qrcode');
+var fs = require('fs');
 
 module.exports.getAllDevices = function(req, res) {
     Device.find({}).sort({imei: 1}).exec(function(err, devices) {
@@ -83,7 +84,7 @@ module.exports.getQRCode = function(req, res) {
         ctx.fillStyle = 'white';
         ctx.fill();
         
-        require('fs').readFile(__dirname + '/../data/wds.png', function(err, data) {
+        fs.readFile(__dirname + '/../data/wds.png', function(err, data) {
             var img = new Canvas.Image;
             img.src = data;
             ctx.drawImage(img, rect.center.x - rect.width / 2, rect.center.y - rect.height / 2, rect.width, rect.height);
