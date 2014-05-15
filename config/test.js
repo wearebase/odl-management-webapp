@@ -15,8 +15,5 @@ module.exports = {
         url: 'http://localhost:' + mapperPort + '/globalmine-server/v2/',
         key: 'k',
         secret: 's'
-    },
-    QR: {
-        url: 'http://localhost:' + mapperPort + '/v1/create-qr-code/'
     }
 }

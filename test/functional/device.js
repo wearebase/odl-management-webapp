@@ -112,4 +112,26 @@ describe("Device API", function () {
         });
     });
 
+    it("should provide a QR endpoint and allow branding", function (done) {
+        http.get(app.url('/device/012345678912345/qr?brand=wds'), function(res) {
+            var data = [];
+         
+            res.on('data', function(chunk) {
+                data.push(chunk);
+            }).on('end', function() {
+                expect(res.statusCode).to.equal(200);
+                expect(res.headers['content-type']).to.equal('image/jpeg');
+
+                var buffer = new Buffer(data.reduce(function(prev, current) {
+                    return prev.concat(Array.prototype.slice.call(current));
+                }, []));
+
+                img = new Canvas.Image();
+                img.src = buffer;
+                expect(decoder.decode(img)).to.equal('012345678912345');
+                done();
+            });
+        });
+    });
+
 });

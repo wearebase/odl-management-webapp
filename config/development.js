@@ -12,8 +12,5 @@ module.exports = {
         url: 'http://localhost:9090/globalmine-server/v2/',
         key: 'k',
         secret: 's'
-    },
-    QR: {
-        url: 'http://api.qrserver.com/v1/create-qr-code/'
     }
 }
