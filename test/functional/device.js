@@ -112,7 +112,7 @@ describe("Device API", function () {
         });
     });
 
-    it("should provide a QR endpoint and allow branding", function (done) {
+    it.skip("should provide a QR endpoint and allow branding", function (done) {
         http.get(app.url('/device/012345678912345/qr?brand=wds'), function(res) {
             var data = [];
          
