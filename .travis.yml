@@ -7,7 +7,7 @@ notifications:
 deploy:
   provider: heroku
   api_key:
-    secure: frRR3/LviVnOlg5JyC4+L4N5YIGJjqTCAsp+c16Ax85Rjts1ZaJJLrhvUgRIFnMJo49FA7NpEAhxy6gtLSP9ewGh7ofAPHLn/Eui0m23PkWHRqz3kBuYTSFcu4Fqh12q6HLtqu7jRNNzWyzhXbU7dlFu05UlubYXTs2+TSnf5WM=
+    secure: khUI0NsEe8v0+nfW5kCeuVwtt33dnTGYCPmMdAvVIXKHnOtyKTR3lJVG+3iG6NCAHtYp7rDtvWNss4FLN6I2rs70XsFumOm2MBnVzyhy1Ao86blAJTc/tgfPZjrf5pOAo4KoCr9PM7vQNiqzPZOi2qclb5XGGebnQSSTIocDEE0=
   app: odl
   on:
     repo: wearebase/odl-management-webapp
