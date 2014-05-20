@@ -24,7 +24,7 @@ module.exports.newQR = function(req, res) {
     }
 
     QR.count({}, function (err, count){
-        QR.create({humanId: 'UK' + pad(count, 10)}, function (err, qr) {
+        QR.create({humanId: 'UK' + pad(count, 5)}, function (err, qr) {
             res.send(err ? 404 : qr);
         });
     });

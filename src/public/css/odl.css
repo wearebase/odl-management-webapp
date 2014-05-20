@@ -40,13 +40,23 @@ img {
 }
 
 .qr img {
-	width: 100%;
+	width: 85%;
 }
 
 .qr h4 {
 	font-style: italic;
 	font-family: monospace;
 	font-size: 1.5vw;
+}
+
+.qr .property {
+	transform: rotate(7deg);
+	-ms-transform: rotate(7deg);
+	-webkit-transform: rotate(270deg);
+	position: absolute;
+	top: 40%;
+	left: 0px;
+	font-size: 10px;
 }
 
 @media print {
@@ -58,5 +68,10 @@ img {
 	}
 	.qr h4 {
 		font-size: 10px;
+	}
+
+	.qr .property {
+		font-size: 5px;
+		left: 15px;
 	}
 }

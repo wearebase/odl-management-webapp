@@ -21,11 +21,11 @@ describe("QR API", function () {
     });
 
     it("should retrieve a QR by humanId as JSON", function (done) {
-        app.http.get(app.url('/qr/UK0000000000'), function(data, response) {
+        app.http.get(app.url('/qr/UK00000'), function(data, response) {
             expect(response.statusCode).to.equal(200);
             expect(data).to.have.property('_id');
             expect(data).to.have.property('date');
-            expect(data).to.have.property('humanId').and.equal('UK0000000000');
+            expect(data).to.have.property('humanId').and.equal('UK00000');
             done();
         });
     });
@@ -35,13 +35,13 @@ describe("QR API", function () {
             expect(response.statusCode).to.equal(200);
             expect(data).to.have.property('_id');
             expect(data).to.have.property('date');
-            expect(data).to.have.property('humanId').and.equal('UK0000000003');
+            expect(data).to.have.property('humanId').and.equal('UK00003');
             done();
         });
     });
 
     it("should return the QR image by humanId with the QR id encoded", function (done) {
-        http.get(app.url('/qr/UK0000000000/image'), function(res) {
+        http.get(app.url('/qr/UK00000/image'), function(res) {
             var data = [];
          
             res.on('data', function(chunk) {
@@ -57,7 +57,7 @@ describe("QR API", function () {
                 img = new Canvas.Image();
                 img.src = buffer;
 
-                 app.http.get(app.url('/qr/UK0000000000'), function(data, response) {
+                 app.http.get(app.url('/qr/UK00000'), function(data, response) {
                     expect(decoder.decode(img)).to.equal(data._id);
                     done();
                 });
@@ -66,7 +66,7 @@ describe("QR API", function () {
     });
 
     it("should provide a QR endpoint and allow branding", function (done) {
-        http.get(app.url('/qr/UK0000000000/image?brand=wds'), function(res) {
+        http.get(app.url('/qr/UK00000/image?brand=wds'), function(res) {
             var data = [];
          
             res.on('data', function(chunk) {
@@ -82,7 +82,7 @@ describe("QR API", function () {
                 img = new Canvas.Image();
                 img.src = buffer;
 
-                 app.http.get(app.url('/qr/UK0000000000'), function(data, response) {
+                 app.http.get(app.url('/qr/UK00000'), function(data, response) {
                     expect(decoder.decode(img)).to.equal(data._id);
                     done();
                 });

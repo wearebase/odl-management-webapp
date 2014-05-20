@@ -25,10 +25,10 @@ module.exports = {
     }],
 
     qrcodes: [{
-            humanId: 'UK0000000000'
+            humanId: 'UK00000'
         },{
-            humanId: 'UK0000000001'
+            humanId: 'UK00001'
         },{
-            humanId: 'UK0000000002'
+            humanId: 'UK00002'
     }]
 };
