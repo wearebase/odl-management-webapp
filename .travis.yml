@@ -4,10 +4,7 @@ node_js:
 services: mongodb
 notifications:
   slack: odl:vToYX9UxvZZxDNtSXYG6UzCT
-before_install: 
-    - sudo apt-get install libcairo2-dev libjpeg8-dev libpango1.0-dev libgif-dev build-essential g++
-    - export PKG_CONFIG_PATH=$HOME"/gst/stage/lib/pkgconfig"
-before_script: export PKG_CONFIG_PATH=$HOME"/gst/stage/lib/pkgconfig"
+before_install: sudo apt-get install libcairo2-dev libjpeg8-dev libpango1.0-dev libgif-dev build-essential g++    
 deploy:
   provider: heroku
   api_key:
