@@ -30,3 +30,33 @@ img {
 .modal .qr {
 	width: 200px;
 }
+
+.qr {
+	text-align: center;
+	color: black;
+	border: solid 1px #dddddd;
+	padding: 10px 10px 0px 10px;
+	margin: 10px;
+}
+
+.qr img {
+	width: 100%;
+}
+
+.qr h4 {
+	font-style: italic;
+	font-family: monospace;
+	font-size: 1.5vw;
+}
+
+@media print {
+	@page {
+        margin: 0.5cm;
+    }
+	nav, button {
+		display: none !important;
+	}
+	.qr h4 {
+		font-size: 10px;
+	}
+}

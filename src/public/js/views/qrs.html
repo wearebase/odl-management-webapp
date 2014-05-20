@@ -1,0 +1,14 @@
+<div class="container" ng-controller="qrs">
+
+    <button ng-click="newQR()" class="btn btn-default">Add QR</button>
+
+    <div class="row" ng-repeat="rows in qrs | partition:4">
+        <div class="col-xs-3" ng-repeat="qr in rows">
+            <div class="qr">
+                <img src="/qr/{{qr.humanId}}/image?brand=wds">
+                <h4>{{qr.humanId}}</h4>
+            </div>
+        </div>
+    </div>
+
+</div>

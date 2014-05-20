@@ -9,5 +9,13 @@ angular.module('odl').service('server', function ($rootScope, $http) {
 
     this.deleteDevice = function(imei) {
         return $http.delete('/device/' + imei);
+    }
+
+    this.getQRs = function() {
+        return $http.get('/qr');
+    } 
+
+    this.newQR = function() {
+        return $http.post('/qr', {});
     } 
 });

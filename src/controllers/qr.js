@@ -32,7 +32,7 @@ module.exports.newQR = function(req, res) {
 
 module.exports.getQR = function(req, res) {
     QR.findOne({humanId: req.param('id')}, function(err, qr) {
-        res.send(err ? 404 : qr);
+        res.send(qr ? qr : 404);
     });
 }
 
@@ -40,6 +40,10 @@ module.exports.getQRImage = function(req, res) {
     var margin = req.param('print') ? 10 : 0;
 
     QR.findOne({humanId: req.param('id')}, function(err, qr) {
+        if (!qr) {
+            res.send(404);
+            return;
+        }
         qrcode.draw(qr.id, {scale: 10, margin: margin}, function(error, canvas) {
             ctx = canvas.getContext('2d');
 
@@ -66,29 +70,26 @@ module.exports.getQRImage = function(req, res) {
             }
 
             if (brands[brand]) {
-                fs.readFile(brands[brand], function(err, data) {
-                    var rect = {
-                        center: {
-                            x: canvas.width / 2,
-                            y: canvas.height / 2
-                        },
-                        width: (canvas.width - margin * 10) / 3,
-                        height: (canvas.height - margin * 10) / 3
-                    };
+                var data = fs.readFileSync(brands[brand]);
+                var rect = {
+                    center: {
+                        x: canvas.width / 2,
+                        y: canvas.height / 2
+                    },
+                    width: (canvas.width - margin * 10) / 3,
+                    height: (canvas.height - margin * 10) / 3
+                };
 
-                    ctx.beginPath();
-                    ctx.rect(rect.center.x - rect.width / 2, rect.center.y - rect.height / 2, rect.width, rect.height);
-                    ctx.fillStyle = 'white';
-                    ctx.fill();
-                    var img = new Canvas.Image;
-                    img.src = data;
-                    ctx.drawImage(img, rect.center.x - rect.width / 2 + 5, rect.center.y - rect.height / 2 + 5, rect.width - 10, rect.height - 10);
-
-                    sendImage();
-                });        
-            } else {
-                sendImage();
+                ctx.beginPath();
+                ctx.rect(rect.center.x - rect.width / 2, rect.center.y - rect.height / 2, rect.width, rect.height);
+                ctx.fillStyle = 'white';
+                ctx.fill();
+                var img = new Canvas.Image;
+                img.src = data;
+                ctx.drawImage(img, rect.center.x - rect.width / 2 + 5, rect.center.y - rect.height / 2 + 5, rect.width - 10, rect.height - 10);
             }
+            
+            sendImage();
         });
     });
 }

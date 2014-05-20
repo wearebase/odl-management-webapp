@@ -90,4 +90,17 @@ describe("QR API", function () {
         });
     });
 
+    it("should complain if we query by a nonexistent qr", function (done) {
+        app.http.get(app.url('/qr/whatever'), function(data, response) {
+            expect(response.statusCode).to.equal(404);
+            done();
+        });
+    });
+
+    it("should complain if we query by a nonexistent qr image", function (done) {
+        app.http.get(app.url('/qr/whatever/image'), function(data, response) {
+            expect(response.statusCode).to.equal(404);
+            done();
+        });
+    });
 });
