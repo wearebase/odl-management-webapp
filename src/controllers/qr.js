@@ -37,24 +37,13 @@ module.exports.getQR = function(req, res) {
 }
 
 module.exports.getQRImage = function(req, res) {
-    var margin = req.param('print') ? 10 : 0;
-
     QR.findOne({humanId: req.param('id')}, function(err, qr) {
         if (!qr) {
             res.send(404);
             return;
         }
-        qrcode.draw(qr.id, {scale: 10, margin: margin}, function(error, canvas) {
+        qrcode.draw(qr.id, {scale: 10, margin: 0}, function(error, canvas) {
             ctx = canvas.getContext('2d');
-
-            if (req.param('print')) {
-                ctx.font = 'italic 20pt Calibri';
-                ctx.fillStyle = 'black';
-                ctx.textAlign = 'center';
-                //ctx.rotate(90*Math.PI/180);
-                ctx.fillText(qr.humanId, canvas.width / 2, canvas.height - 10);
-                //ctx.rotate(-90*Math.PI/180);
-            }
 
             function sendImage() {
                 res.type('jpg');
@@ -76,8 +65,8 @@ module.exports.getQRImage = function(req, res) {
                         x: canvas.width / 2,
                         y: canvas.height / 2
                     },
-                    width: (canvas.width - margin * 10) / 3,
-                    height: (canvas.height - margin * 10) / 3
+                    width: canvas.width / 3,
+                    height: canvas.height / 3
                 };
 
                 ctx.beginPath();
