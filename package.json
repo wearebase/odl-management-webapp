@@ -23,7 +23,7 @@
         "mocha": "1.18.2",
         "chai": "1.9.1",
         "istanbul": "0.2.7",
-        "mean-mock": "1.1.1",
+        "mean-mock": "1.1.2",
         "node-inspector": "0.7.3",
         "jsqrcode": "0.0.6"    
     },
