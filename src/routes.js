@@ -4,18 +4,25 @@ var controllers = require('require-directory')(module, 'src/controllers');
 
 module.exports = function(app) {
     app.get ('/'               , controllers.odl.get);
+    
     app.get ('/device'         , controllers.device.getAllDevices);
     app.post('/device'         , controllers.device.newDevice);
     app.del ('/device/:imei'   , controllers.device.deleteDeviceByImei);
     app.get ('/device/:imei'   , controllers.device.getDeviceByImei);
     app.get ('/device/:imei/qr', controllers.device.getQRCode);
+    
     app.post('/check/in/:imei' , controllers.check.checkIn);
     app.post('/check/out/:imei', controllers.check.checkOut);
-
-    app.get ('/user'            , controllers.user.getAllUsers);
-    app.post('/user'            , controllers.user.newUser);
-    app.del ('/user/:userName'  , controllers.user.deleteUserByUsername);
-    app.get ('/user/:userName'  , controllers.user.getUserByUserName);
+    
+    app.get ('/qr'             , controllers.qr.getAllQRs);
+    app.post('/qr'             , controllers.qr.newQR);
+    app.get ('/qr/:id'         , controllers.qr.getQR);
+    app.get ('/qr/:id/image'   , controllers.qr.getQRImage);
+    
+    app.get ('/user'           , controllers.user.getAllUsers);
+    app.post('/user'           , controllers.user.newUser);
+    app.del ('/user/:userName' , controllers.user.deleteUserByUsername);
+    app.get ('/user/:userName' , controllers.user.getUserByUserName);
 
     app.use('/public', require('express').static('src/public'));
 

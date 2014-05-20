@@ -4,7 +4,7 @@ var setup = rekuire('test/util/setup-functional');
 
 describe("User API", function () {
 
-    var app = setup(rekuire('test/data/users'));
+    var app = setup(rekuire('test/data/db'));
 
     it("should retrieve all the users by email", function (done) {
         app.http.get(app.url('/user'), function(data, response) {

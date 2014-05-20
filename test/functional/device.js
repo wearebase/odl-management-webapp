@@ -7,7 +7,7 @@ var http = require('http');
 
 describe("Device API", function () {
 
-    var app = setup(rekuire('test/data/devices'), rekuire('test/data/mappings'));
+    var app = setup(rekuire('test/data/db'), rekuire('test/data/mappings'));
 
     it("should retrieve all the devices ordered by imei", function (done) {
         app.http.get(app.url('/device'), function(data, response) {

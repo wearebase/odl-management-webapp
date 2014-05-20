@@ -4,7 +4,7 @@ var setup = rekuire('test/util/setup-functional');
 
 describe("Booking API", function () {
 
-    var app = setup(rekuire('test/data/devices'));
+    var app = setup(rekuire('test/data/db'));
 
     it("should check a phone in", function (done) {
         app.http.post(app.url('/check/in/012345678912345'), function(device, response) {
