@@ -53,7 +53,7 @@ module.exports.getQRImage = function(req, res) {
             var brand = req.param('brand');
 
             var brands = {
-                wds: __dirname + '/../data/wds.gif',
+                wds: __dirname + '/../data/wds.jpg',
                 wds2: __dirname + '/../data/wds.png',
                 apple: __dirname + '/../data/apple.png'
             }
