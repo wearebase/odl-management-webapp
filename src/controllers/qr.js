@@ -86,9 +86,14 @@ module.exports.getQRImage = function(req, res) {
                 ctx.fill();
                 var img = new Canvas.Image;
                 img.src = data;
-                ctx.drawImage(img, rect.center.x - rect.width / 2 + 5, rect.center.y - rect.height / 2 + 5, rect.width - 10, rect.height - 10);
+                var ratio = img.height / img.width;
+                var iwidth = rect.width - 10;
+                var iheight = iwidth * ratio;
+                var ix = rect.center.x - iwidth / 2;
+                var iy = rect.center.y - iheight / 2;
+                ctx.drawImage(img, ix, iy, iwidth, iheight);
             }
-            
+
             sendImage();
         });
     });
