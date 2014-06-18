@@ -7,7 +7,7 @@ describe("User API", function () {
     var app = setup(rekuire('test/data/db'));
 
     it("should retrieve all the users by email", function (done) {
-        app.http.get(app.url('/user'), function(data, response) {
+        app.http.get(app.url('/api/user'), function(data, response) {
             expect(response.statusCode).to.equal(200);
             expect(data).to.have.length(3);
             expect(data[0]).to.have.property('email').and.equal('pau@pau.com');
@@ -27,7 +27,7 @@ describe("User API", function () {
               },
             headers:{"Content-Type": "application/json"}
         };
-        app.http.post(app.url('/user'), args, function(data, response) {
+        app.http.post(app.url('/api/user'), args, function(data, response) {
             expect(response.statusCode).to.equal(200);
             expect(data).to.have.property('userName').and.equal('Michael');
             expect(data).to.have.property('email').and.equal('mick@wds.com');
@@ -38,11 +38,11 @@ describe("User API", function () {
     });
 
     it("should find a user by username and delete it", function (done) {
-        app.http.delete(app.url('/user/Pau'), function(data, response) {
+        app.http.delete(app.url('/api/user/Pau'), function(data, response) {
             expect(response.statusCode).to.equal(200);
             expect(data).to.have.property('userName').and.equal('Pau');
 
-            app.http.get(app.url('/user'), function(data, response) {
+            app.http.get(app.url('/api/user'), function(data, response) {
                 expect(data).to.have.length(2);
                 expect(data[0]).to.have.property('userName').and.equal('Seal');
                 expect(data[1]).to.have.property('userName').and.equal('Goeff');
@@ -52,7 +52,7 @@ describe("User API", function () {
     });
 
     it("should query by username", function (done) {
-        app.http.get(app.url('/user/Seal'), function(data, response) {
+        app.http.get(app.url('/api/user/Seal'), function(data, response) {
             expect(response.statusCode).to.equal(200);
             expect(data).to.have.property('userName').and.equal('Seal');
             done();
@@ -60,7 +60,7 @@ describe("User API", function () {
     });
 
     it("should fail if we query by a nonexistent imei", function (done) {
-        app.http.get(app.url('/user/whatever'), function(data, response) {
+        app.http.get(app.url('/api/user/whatever'), function(data, response) {
             expect(response.statusCode).to.equal(404);
             done();
         });

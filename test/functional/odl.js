@@ -6,13 +6,20 @@ describe("ODL Website", function () {
 
     var app = setup();
 
-    it("should salutate when hitting the root", function (done) {
+    it("should load the demo page", function (done) {
         app.http.get(app.url('/'), function(data, response) {
-            expect(data).to.equal('Hello ODL!!');
+            expect(data).to.contain('Open Device Lab Management App');
             done();
         });           
     });
 
+    it("should load the qrs page", function (done) {
+        app.http.get(app.url('/qrs.html'), function(data, response) {
+            expect(data).to.contain('Open Device Lab Management App');
+            done();
+        });           
+    });   
+    
     it("should complain when hitting everything else", function (done) {
         app.http.get(app.url('/whatever'), function(data, response) {
             expect(response.statusCode).to.equal(404);

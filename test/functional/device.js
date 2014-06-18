@@ -10,7 +10,7 @@ describe("Device API", function () {
     var app = setup(rekuire('test/data/db'), rekuire('test/data/mappings'));
 
     it("should retrieve all the devices ordered by imei", function (done) {
-        app.http.get(app.url('/device'), function(data, response) {
+        app.http.get(app.url('/api/device'), function(data, response) {
             expect(response.statusCode).to.equal(200);
             expect(data).to.have.length(3);
             expect(data[0]).to.have.property('imei').and.equal('012345678912345');
@@ -25,7 +25,7 @@ describe("Device API", function () {
             data: { imei: "312345678912345"},
             headers:{"Content-Type": "application/json"}
         };
-        app.http.post(app.url('/device'), args, function(data, response) {
+        app.http.post(app.url('/api/device'), args, function(data, response) {
             expect(response.statusCode).to.equal(200);
             expect(data).to.have.property('imei').and.equal('312345678912345');
             expect(data).to.have.property('_id');
@@ -39,12 +39,12 @@ describe("Device API", function () {
             data: { imei: "012345678912345", modified: '2014-03-25T15:19:55.052Z' },
             headers:{"Content-Type": "application/json"}
         };
-        app.http.post(app.url('/device'), args, function(data, response) {
+        app.http.post(app.url('/api/device'), args, function(data, response) {
             expect(response.statusCode).to.equal(200);
             expect(data).to.have.property('imei').and.equal('012345678912345');
             expect(data).to.have.property('modified').and.equal('2014-03-25T15:19:55.052Z');
 
-            app.http.get(app.url('/device'), function(data, response) {
+            app.http.get(app.url('/api/device'), function(data, response) {
                 expect(data).to.have.length(3);
                 expect(data[0]).to.have.property('imei').and.equal('012345678912345');
                 expect(data[1]).to.have.property('imei').and.equal('112345678912345');
@@ -55,11 +55,11 @@ describe("Device API", function () {
     });
 
     it("should delete a device by imei", function (done) {
-        app.http.delete(app.url('/device/012345678912345'), function(data, response) {
+        app.http.delete(app.url('/api/device/012345678912345'), function(data, response) {
             expect(response.statusCode).to.equal(200);
             expect(data).to.have.property('imei').and.equal('012345678912345');
 
-            app.http.get(app.url('/device'), function(data, response) {
+            app.http.get(app.url('/api/device'), function(data, response) {
                 expect(data).to.have.length(2);
                 expect(data[0]).to.have.property('imei').and.equal('112345678912345');
                 expect(data[1]).to.have.property('imei').and.equal('212345678912345');
@@ -69,14 +69,14 @@ describe("Device API", function () {
     });
 
     it("should complain when deleting a non existing device", function (done) {
-        app.http.delete(app.url('/device/012345678912432'), function(data, response) {
+        app.http.delete(app.url('/api/device/012345678912432'), function(data, response) {
             expect(response.statusCode).to.equal(404);
             done();
         });
     });
 
     it("should query by imei", function (done) {
-        app.http.get(app.url('/device/012345678912345'), function(data, response) {
+        app.http.get(app.url('/api/device/012345678912345'), function(data, response) {
             expect(response.statusCode).to.equal(200);
             expect(data).to.have.property('imei').and.equal('012345678912345');
             done();
@@ -84,7 +84,7 @@ describe("Device API", function () {
     });
 
     it("should complain if we query by a nonexistent imei", function (done) {
-        app.http.get(app.url('/device/whatever'), function(data, response) {
+        app.http.get(app.url('/api/device/whatever'), function(data, response) {
             expect(response.statusCode).to.equal(404);
             done();
         });
