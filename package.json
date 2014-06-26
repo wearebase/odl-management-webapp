@@ -18,7 +18,8 @@
         "underscore": "1.6.0",
         "qrcode": "*",
         "canvas": "1.0.4",
-        "node-uuid": "*"
+        "node-uuid": "*",
+        "csv": "0.3.0" 
     },
     "devDependencies": {
         "mocha": "1.18.2",
@@ -26,8 +27,7 @@
         "istanbul": "0.2.7",
         "mean-mock": "1.1.2",
         "node-inspector": "0.7.3",
-        "jsqrcode": "0.0.6",
-        "csv": "0.3.0" 
+        "jsqrcode": "0.0.6"
     },
     "scripts": {
         "start": "node src/odl.js",

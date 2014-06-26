@@ -9,15 +9,17 @@ var Canvas = new require('canvas');
 var qrcode = require('qrcode');
 var fs = require('fs');
 var uuid = require('node-uuid');
+var csv = require('csv');
 
 module.exports.getAllQRs = function(req, res) {
     QR.find({}).sort({_id: 1}).exec(function(err, qrs) {
         if (req.param('format') == 'csv') {
-            var csv = 'code,text,copyright\n';
+            var string = 'code,text,copyright\n';
             qrs.forEach(function(qr) {
-                csv += qr.code + ',' + qr.humanId + ',' + 'Property of ©WDS\n'
+                string += qr.code + ',' + qr.humanId + ',' + 'Property of ©WDS\n'
             });
-            res.send(err ? 404 : csv);
+            res.attachment('qrs.csv');
+            csv().from.string(string, {}).to(res);
         } else {
             res.send(err ? 404 : qrs);
         }

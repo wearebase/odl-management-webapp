@@ -27,6 +27,7 @@ describe("QR API", function () {
     it("should retrieve all the qrs created so far as CSV", function (done) {
         app.http.get(app.url('/api/qr?format=csv'), function(data, response) {
             expect(response.statusCode).to.equal(200);
+            expect(response.headers['content-type']).to.equal('text/csv');
             csv().from.string(data, {}).to.array(function(qrs){
                 expect(qrs).to.have.length(4);
                 expect(qrs[0][0]).to.equal('code');
