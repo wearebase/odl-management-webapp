@@ -26,7 +26,13 @@ angular.module('odl').controller('qrs', function($scope, $rootScope, server) {
     }
 
     $scope.newQR = function() {
-        server.newQR().success($scope.refresh);
+      if ($scope.number) {
+        server.newQR().success(function() {$scope.newQR()});
+        $scope.number--;
+      } else {
+        $scope.number = 1;
+        $scope.refresh();
+      }
     }
 
     $scope.refresh();
