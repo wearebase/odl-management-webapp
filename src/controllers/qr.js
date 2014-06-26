@@ -18,6 +18,7 @@ module.exports.getAllQRs = function(req, res) {
             qrs.forEach(function(qr) {
                 string += qr.code + ',' + qr.humanId + ',' + 'Property of ©WDS\n'
             });
+            res.set({'charset' : 'utf-8'});
             res.attachment('qrs.csv');
             csv().from.string(string, {}).to(res);
         } else {
