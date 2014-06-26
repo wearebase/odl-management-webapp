@@ -17,7 +17,8 @@
         "async": "0.7.0",
         "underscore": "1.6.0",
         "qrcode": "*",
-        "canvas": "1.0.4"
+        "canvas": "1.0.4",
+        "node-uuid": "*"
     },
     "devDependencies": {
         "mocha": "1.18.2",
@@ -25,7 +26,8 @@
         "istanbul": "0.2.7",
         "mean-mock": "1.1.2",
         "node-inspector": "0.7.3",
-        "jsqrcode": "0.0.6"    
+        "jsqrcode": "0.0.6",
+        "csv": "0.3.0" 
     },
     "scripts": {
         "start": "node src/odl.js",

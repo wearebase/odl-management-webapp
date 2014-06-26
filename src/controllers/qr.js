@@ -8,10 +8,19 @@ var request = require('request');
 var Canvas = new require('canvas');
 var qrcode = require('qrcode');
 var fs = require('fs');
+var uuid = require('node-uuid');
 
 module.exports.getAllQRs = function(req, res) {
     QR.find({}).sort({_id: 1}).exec(function(err, qrs) {
-        res.send(err ? 404 : qrs);
+        if (req.param('format') == 'csv') {
+            var csv = 'code,text,copyright\n';
+            qrs.forEach(function(qr) {
+                csv += qr.code + ',' + qr.humanId + ',' + 'Property of ©WDS\n'
+            });
+            res.send(err ? 404 : csv);
+        } else {
+            res.send(err ? 404 : qrs);
+        }
     });
 }
 
@@ -24,7 +33,7 @@ module.exports.newQR = function(req, res) {
     }
 
     QR.count({}, function (err, count){
-        QR.create({humanId: 'UK' + pad(count, 5)}, function (err, qr) {
+        QR.create({code: uuid.v4(), humanId: 'UK' + pad(count, 5)}, function (err, qr) {
             res.send(err ? 404 : qr);
         });
     });
@@ -42,7 +51,7 @@ module.exports.getQRImage = function(req, res) {
             res.send(404);
             return;
         }
-        qrcode.draw(qr.id, {scale: 10, margin: 0}, function(error, canvas) {
+        qrcode.draw(qr.code, {scale: 10, margin: 0}, function(error, canvas) {
             ctx = canvas.getContext('2d');
 
             function sendImage() {
