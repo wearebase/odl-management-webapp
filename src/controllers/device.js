@@ -37,6 +37,7 @@ module.exports.newDevice = function(req, res) {
 
                     req.body.attributes = attributes;
                     req.body.image = gmDevice.image;
+                    req.body.name = gmDevice.name;
 
                     Device.create(req.body, function (err, device) {
                         res.send(err ? 404 : device);

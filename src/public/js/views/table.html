@@ -11,7 +11,8 @@
     <div class="row">
         <ul id="devices-list" class="small-block-grid-3 medium-block-grid-4 large-block-grid-5">
             <li ng-click="select(device)" ng-repeat="device in filterDevices = (devices | filter:imei)">
-                <h4>{{device.imei}}</h4>
+                <h4>{{device.name}}</h4>
+                <h4 class="hide">{{device.imei}}</h4>
                 <img ng-src="{{device.image}}">
                 <span ng-show="{{device.checkedIn}}">CHECKED!!</span>
             </li>
