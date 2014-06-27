@@ -8,7 +8,7 @@ module.exports = {
         url: process.env.MONGOLAB_URI
     },
     GMAPI: {
-        url: 'http://localhost:9090/globalmine-server/v2/',
+        url: 'http://localhost:' + process.env.PORT + '/globalmine-server/v2/',
         key: 'k',
         secret: 's'
     }
