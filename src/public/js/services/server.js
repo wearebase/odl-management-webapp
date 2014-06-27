@@ -11,6 +11,10 @@ angular.module('odl').service('server', function ($rootScope, $http) {
         return $http.delete('/api/device/' + imei);
     }
 
+    this.checkDevice = function(state, imei) {
+        return $http.post('/api/check/' + (state ? 'in' : 'out') + '/' + imei);
+    }
+
     this.getQRs = function() {
         return $http.get('/api/qr');
     } 

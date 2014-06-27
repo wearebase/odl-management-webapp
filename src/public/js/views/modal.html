@@ -1,37 +1,25 @@
-<div id="modal" class="modal fade" ng-controller="device">
-    <div class="modal-dialog modal-lg">
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                <h4 class="modal-title">Device management</h4>
-            </div>
-            <div class="modal-body">
-                <div class="row">
-                    <div class="col-xs-6 text-center">
-                        <h5>IMEI: {{device.imei}}</h5>
-                        <img src="{{device.image}}">                
-                    </div>
-                    <div class="col-xs-6">   
-                        <blockquote>
-                        <h5>QR Code</h5>
-                        <img class="qr" src="/device/{{device.imei}}/qr?margin=10&print=true" class="img-thumbnail">                
-                        </blockquote>             
-                        <blockquote>             
-                        <h5>Attributes ({{device.attributes.length}})</h5>
-                        <dl class="dl-horizontal">
-                            <div ng-repeat="attribute in device.attributes">
-                                <dt>{{attribute.name}}:</dt>
-                                <dd>{{attribute.value}}</dd>
-                            </div>
-                        </dl>
-                        </blockquote>             
-                    </div>
-                </div>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-danger" data-dismiss="modal" ng-click="delete()">Delete device</button>
-                <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+<div id="device-modal" class="reveal-modal" data-reveal ng-controller="device">
+    <div class="row">
+        <div class="text-center small-4 columns">
+            <img ng-src="{{device.image}}">            
+        </div>
+        <div class="small-8 columns">
+            <h4>IMEI: {{device.imei}}</h4>
+            <h4>Attributes ({{device.attributes.length}})</h4>
+            <blockquote>
+                <ul id="attrs-list" class="small-block-grid-3 medium-block-grid-4 large-block-grid-5">
+                    <li ng-repeat="attribute in device.attributes">
+                        <strong>{{attribute.name}}</strong>
+                        <span>{{attribute.value}}</span>
+                    </li>
+                </ul>
+            </blockquote>
+            <div class="right">                
+                <a href="" ng-show="!device.checkedIn" class="button" ng-click="check()"><i class="fa fa-sign-in"></i> Check in</a>
+                <a href="" ng-show="device.checkedIn" class="button" ng-click="check()"> <i class="fa fa-sign-out"></i> Check out</a>
+                <a href="" class="button alert" ng-click="delete()"><i class="fa fa-trash-o"></i> Delete</a>
             </div>
         </div>
     </div>
+    <a class="close-reveal-modal">&#215;</a>
 </div>

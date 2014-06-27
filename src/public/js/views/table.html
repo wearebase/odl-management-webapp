@@ -1,37 +1,20 @@
-<div class="container" ng-controller="devices">
-
-    <div class="input-group">
-        <input type="text" class="form-control" ng-model="imei" placeholder="Add new device by IMEI">
-        <span class="input-group-btn">
-            <button ng-click="newDevice()" class="btn btn-default">Add device</button>
-        </span>
+<nav id="devices" ng-controller="devices">
+    <div class="panel row text-center">
+        <div class="small-12 columns">
+            <input id="device-search" ng-model="imei" class="text-center" type="text" placeholder="Search devices">
+        </div>
+        <div class="text-center" ng-hide="filterDevices.length">
+            <h1><small>No devices found for this IMEI</small></h1>
+            <a href="#" ng-click="newDevice()" class="button">Create device</a>
+        </div>
     </div>
-
-    <h3>
-        <i class="fa fa-phone"> </i> Current devices
-    </h3>
-
-    <div class="table">
-        <table id="topics" class="table table-bordered table-hover">
-            <thead>
-                <tr>
-                    <th><i class="fa fa-camera"></i> Picture</th>
-                    <th ng-click="sort('imei')"><i class="fa fa-credit-card"></i> IMEI</th>
-                    <th ng-click="sort('attributes.length')"><i class="fa fa-tag"></i> Number of attributes</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr ng-click="select(device)" data-toggle="modal" data-target="#modal" id="device-{{device.imei}}" ng-repeat="device in devices">
-                    <td><img src="{{device.image}}"></td>
-                    <td>{{device.imei}}</td>
-                    <td><span class="label label-default">{{device.attributes.length}}</span></td> 
-                </tr>
-            </tbody>
-        </table>
+    <div class="row">
+        <ul id="devices-list" class="small-block-grid-3 medium-block-grid-4 large-block-grid-5">
+            <li ng-click="select(device)" ng-repeat="device in filterDevices = (devices | filter:imei)">
+                <h4>{{device.imei}}</h4>
+                <img ng-src="{{device.image}}">
+                <span ng-show="{{device.checkedIn}}">CHECKED!!</span>
+            </li>
+        </ul>
     </div>
-
-    <p class="text-center text-muted">
-        <small>Last updated: {{lastModified | date:'mediumTime'}}</small>
-    </p>
-
-</div>
+</nav>

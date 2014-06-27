@@ -1,62 +1,25 @@
-td, th {
-    cursor: pointer;
-    text-align: center;
-    vertical-align: middle !important;
+#devices {
+	padding: 20px;
 }
 
-img {
-	width: 30px;
-}
-
-.table {
-	height: 300px;
-	overflow: auto;
-}
-
-.modal .well {
-    height: 200px;
-    overflow: scroll;
-}
-
-.modal-body {
-	height: 400px;
-	overflow-y: auto;
-}
-
-.modal img {
-	width: 120px;
-}
-
-.modal .qr {
-	width: 200px;
-}
-
-.qr {
+#devices-list li {
+	padding-top: 5px;
 	text-align: center;
-	color: black;
-	border: solid 1px #dddddd;
-	padding: 10px 10px 0px 10px;
-	margin: 10px;
 }
 
-.qr img {
-	width: 85%;
+#devices-list li:hover {
+	background-color: #dddddd;
+	cursor: pointer;
 }
 
-.qr h4 {
-	font-style: italic;
-	font-family: monospace;
-	font-size: 1.5vw;
+#devices img {
+	max-height: 300px;
+	max-width: 100px;
 }
 
-.qr .property {
-	transform: rotate(7deg);
-	-ms-transform: rotate(7deg);
-	-webkit-transform: rotate(270deg);
-	position: absolute;
-	top: 40%;
-	left: 0px;
-	font-size: 10px;
+#device-modal img {
+	width: 100px;
+	margin-bottom: 20px;
 }
 
 @media print {

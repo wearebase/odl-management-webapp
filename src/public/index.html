@@ -1,34 +1,53 @@
 <!DOCTYPE html>
-<html lang="en" ng-app="odl">
-
+<!--[if IE 9]><html class="lt-ie10" lang="en" > <![endif]-->
+<html class="no-js" lang="en" >
     <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>ODL</title>
-        <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
-        <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootswatch/3.1.1/readable/bootstrap.min.css">
-        <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
-        <link href="css/odl.css" rel="stylesheet">
-        <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
-        <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+        <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/foundation/5.3.0/css/normalize.min.css">
+        <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/foundation/5.3.0/css/foundation.min.css">
+        <link href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.css" rel="stylesheet">
+        <link rel="stylesheet" href="css/odl.css">
+        <script src="//cdnjs.cloudflare.com/ajax/libs/foundation/5.3.0/js/vendor/modernizr.js"></script>
         <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.9/angular.min.js"></script>
         <script src="js/odl.js"></script>
+        <script src="js/filters/partition.js"></script>
         <script src="js/services/server.js"></script>
         <script src="js/controllers/devices.js"></script>
         <script src="js/controllers/device.js"></script>
     </head>
-
-    <body>
-
-        <nav class="navbar navbar-default" role="navigation">
-            <div class="container-fluid">
-                <div class="navbar-header">
-                    <a class="navbar-brand" href="#"><i class="fa fa-phone"> </i> Open Device Lab Management App</a>
-                </div>
-            </div>
-        </nav>
-
+    <body ng-app="odl">
+        <div class="fixed">
+            <nav class="top-bar" data-topbar>
+                <ul class="title-area">
+                    <li class="name">
+                        <h1><a href="#">ODL Management</a></h1>
+                    </li>
+                    <li class="toggle-topbar menu-icon"><a href="#"><span>Menu</span></a></li>
+                </ul>
+                <section class="hide top-bar-section">
+                    <ul class="right">
+                        <li class="has-dropdown">
+                            <a href="#">User</a>
+                            <ul class="dropdown">
+                                <li><a href="#">Logout</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                    <ul class="left">
+                        <li class="active"><a href="#">Devices</a></li>
+                        <li><a href="/qrs.html">QR Codes</a></li>
+                    </ul>
+                </section>
+            </nav>
+        </div>
+    
         <section ng-include src="'js/views/table.html'"></section>
-        <section ng-include src="'js/views/modal.html'"></section>
+        <section ng-include src="'js/views/modal.html'"></section>        
 
+        <script src="//cdnjs.cloudflare.com/ajax/libs/foundation/5.3.0/js/vendor/jquery.js"></script>
+        <script src="//cdnjs.cloudflare.com/ajax/libs/foundation/5.3.0/js/foundation.min.js"></script>
+        <script>$(document).foundation();</script>        
     </body>
-
 </html>
