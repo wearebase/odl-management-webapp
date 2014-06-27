@@ -25,6 +25,7 @@ module.exports.newDevice = function(req, res) {
         } else {
             args = { parameters:{ k: config.GMAPI.key, z: config.GMAPI.secret } };
             rest.get(config.GMAPI.url + 'devices/imei/' + req.body.imei, args, function(gmDevice, response) {
+                console.log(gmDevice);
                 if (response.statusCode != 200) {
                     res.send(response.statusCode);
                     return;
