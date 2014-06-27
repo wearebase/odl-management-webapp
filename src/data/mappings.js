@@ -5,7 +5,7 @@ module.exports = {
             brand: "Apple",
             name: "iPhone 4S",
             thumbnail: "http://www.clipartbest.com/cliparts/4c9/oqB/4c9oqBKcE.png",
-            image: "http://www.clipartbest.com/cliparts/4c9/oqB/4c9oqBKcE.png"
+            image: "http://media01.versus.io/apple-iphone-5/front/front-1376057249893.flat.jpg"
         }
     },
     "/globalmine-server/v2/deviceAttributes/:id": {

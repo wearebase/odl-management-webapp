@@ -2,23 +2,59 @@
 	padding: 20px;
 }
 
-#devices-list li {
-	padding-top: 5px;
-	text-align: center;
+#devices-list li {	
+	text-align: center;	
 }
 
-#devices-list li:hover {
-	background-color: #dddddd;
-	cursor: pointer;
+#devices-list a {	
+	padding: 0px 10px 25px 10px;	
+	display: block;			
 }
 
-#devices img {
-	max-height: 300px;
-	max-width: 100px;
+#devices-list .phone-wrap {		
+	display: inline-block;	
+}
+
+#devices-list a:hover {
+	background-color: #dddddd;	
+}
+
+#devices-list .phone-wrap div {		
+    position: relative;
+    top: 15px;
+    left: 15px;
+    text-align: right;    
+}
+
+#devices-list .phone-wrap div i {		
+    background-color: black;
+  	border-radius: 20px;
+  	padding: 5px;
+  	color: white;
+  	border: solid 2px;
+  	background-color: #008CBA;
+	border-color: #007295;
+}
+
+#devices-list h5 {
+	border-bottom: solid 1px #dddddd;	
+	margin-bottom: 5px;
+}
+
+#devices img {	
+	margin: 0 auto 0 auto;
+	display: block;
+	max-height: 250px;
+	max-width: 100px;	
 }
 
 #device-modal img {
 	width: 100px;
+	margin-bottom: 20px;
+}
+
+#device-modal h3 {
+	border-bottom: solid 1px #dddddd;
 	margin-bottom: 20px;
 }
 

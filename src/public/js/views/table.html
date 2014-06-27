@@ -9,12 +9,18 @@
         </div>
     </div>
     <div class="row">
-        <ul id="devices-list" class="small-block-grid-3 medium-block-grid-4 large-block-grid-5">
-            <li ng-click="select(device)" ng-repeat="device in filterDevices = (devices | filter:imei)">
-                <h4>{{device.name}}</h4>
-                <h4 class="hide">{{device.imei}}</h4>
-                <img ng-src="{{device.image}}">
-                <span ng-show="{{device.checkedIn}}">CHECKED!!</span>
+        <ul id="devices-list" class="small-block-grid-2 medium-block-grid-4 large-block-grid-5">
+            <li ng-repeat="device in filterDevices = (devices | filter:imei)">                
+                <h5 class="subheader">{{device.name}}</h5>
+                <a ng-click="select(device)" href="#">                    
+                    <div class="phone-wrap">                        
+                        <div>
+                            <i ng-style="{visibility: device.checkedIn && 'visible' || 'hidden'}" class="fa fa-circle-o-notch fa-spin"></i> &nbsp;
+                        </div>
+                        <img ng-src="{{device.image}}">                                            
+                    </div>
+                    <h4 class="hide">{{device.imei}}</h4>                                    
+                </a>                                
             </li>
         </ul>
     </div>
