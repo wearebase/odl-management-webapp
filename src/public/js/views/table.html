@@ -11,7 +11,7 @@
     <div class="row">
         <ul id="devices-list" class="small-block-grid-2 medium-block-grid-4 large-block-grid-5">
             <li ng-repeat="device in filterDevices = (devices | filter:imei)">                
-                <h5 class="subheader">{{device.name}}</h5>
+                <h5 class="subheader"><i class="fa fa-{{device.brand.toLowerCase()}}"></i> {{device.name}}</h5>
                 <a ng-click="select(device)" href="#">                    
                     <div class="phone-wrap">                        
                         <div>
