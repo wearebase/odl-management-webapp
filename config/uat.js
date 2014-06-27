@@ -2,10 +2,10 @@ module.exports = {
     DEV: true,
 
     ODL: {
-        port: 9090        
+        port: process.env.PORT        
     },
     DB: {
-        url: 'mongodb://localhost/odl'
+        url: process.env.MONGOLAB_URI
     },
     GMAPI: {
         url: 'http://localhost:9090/globalmine-server/v2/',

@@ -5,8 +5,7 @@ module.exports = {
         port: mapperPort
     },
     ODL: {
-        port: 9000,
-        greeting: 'Hello ODL!!'
+        port: 9000
     },
     DB: {
         url: 'mongodb://localhost/odl-test'
