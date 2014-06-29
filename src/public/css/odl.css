@@ -1,36 +1,36 @@
-nav .fa-github {	
-	font-size: 25px;
+nav .fa-github {
+	font-size: 18px;
 }
 
 #devices {
 	padding: 20px;
 }
 
-#devices-list li {	
-	text-align: center;	
+#devices-list li {
+	text-align: center;
 }
 
-#devices-list a {	
-	padding: 0px 10px 25px 10px;	
-	display: block;			
+#devices-list a {
+	padding: 0px 10px 25px 10px;
+	display: block;
 }
 
-#devices-list .phone-wrap {		
-	display: inline-block;	
+#devices-list .phone-wrap {
+	display: inline-block;
 }
 
 #devices-list a:hover {
-	background-color: #dddddd;	
+	background-color: #dddddd;
 }
 
-#devices-list .phone-wrap div {		
+#devices-list .phone-wrap div {
     position: relative;
     top: 15px;
     left: 15px;
-    text-align: right;    
+    text-align: right;
 }
 
-#devices-list .phone-wrap div i {		
+#devices-list .phone-wrap div i {
     background-color: black;
   	border-radius: 20px;
   	padding: 5px;
@@ -41,15 +41,15 @@ nav .fa-github {
 }
 
 #devices-list h5 {
-	border-bottom: solid 1px #dddddd;	
+	border-bottom: solid 1px #dddddd;
 	margin-bottom: 5px;
 }
 
-#devices img {	
+#devices img {
 	margin: 0 auto 0 auto;
 	display: block;
 	max-height: 250px;
-	max-width: 100px;	
+	max-width: 100px;
 }
 
 #device-modal img {
