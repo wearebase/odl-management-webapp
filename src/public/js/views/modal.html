@@ -1,23 +1,42 @@
 <div id="device-modal" class="reveal-modal" data-reveal ng-controller="device">
-    <h3 class="subheader">{{device.name}}</h3>
+    <h3>{{device.brand}} {{device.name}} - <span class="subheader">{{device.imei}}</span></h3>
     <div class="row">
         <div class="text-center small-4 columns">
-            <img ng-src="{{device.image}}">            
-            <h5 class="subheader">IMEI: {{device.imei}}</h5>
+            <img ng-src="{{device.image}}">
         </div>
-        <div class="small-8 columns">                        
-            <ul id="attrs-list" class="small-block-grid-3 medium-block-grid-4 large-block-grid-5">
-                <li ng-repeat="attribute in device.attributes">
-                    <strong>{{attribute.name}}</strong>
-                    <span>{{attribute.value}}</span>
-                </li>
-            </ul>            
-            <div class="right">                
-                <a href="" ng-show="!device.checkedIn" class="button" ng-click="check()"><i class="fa fa-sign-in"></i> Check in</a>
-                <a href="" ng-show="device.checkedIn" class="button" ng-click="check()"> <i class="fa fa-sign-out"></i> Check out</a>
-                <a href="" class="button alert" ng-click="delete()"><i class="fa fa-trash-o"></i> Delete</a>
+        <div class="small-8 columns">
+            <ul class="tabs" data-tab>
+                <li class="tab-title active"><a href="#device-attributes">Attributes</a></li>
+                <li class="tab-title"><a href="#device-history">History</a></li>
+                <li class="tab-title"><a href="#device-stats">Statistics</a></li>
+            </ul>
+            <div class="tabs-content">
+                <div class="content active" id="device-attributes">
+                    <input id="attrs-search" ng-model="attrsFilter" type="text" placeholder="Search attributes">
+                    <div id="attrs-list" class="panel">
+                        <div class="row" ng-repeat="attribute in filterAttributes = (device.attributes | filter:attrsFilter)">
+                            <div class="small-4 columns">
+                                <strong>{{attribute.name}}:</strong>
+                            </div>
+                            <div class="small-8 columns">
+                                {{attribute.value}}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="content" id="device-history">
+                    <p>The device history will be here...</p>
+                </div>
+                <div class="content" id="device-stats">
+                    <p>The device statistics will be here...</p>
+                </div>
             </div>
         </div>
+    </div>
+    <div class="right">
+        <a href="" ng-show="!device.checkedIn" class="button" ng-click="check()"><i class="fa fa-sign-in"></i> Check in</a>
+        <a href="" ng-show="device.checkedIn" class="button" ng-click="check()"> <i class="fa fa-sign-out"></i> Check out</a>
+        <a href="" class="button alert" ng-click="delete()"><i class="fa fa-trash-o"></i> Delete</a>
     </div>
     <a class="close-reveal-modal">&#215;</a>
 </div>

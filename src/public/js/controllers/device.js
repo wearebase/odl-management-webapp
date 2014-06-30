@@ -16,5 +16,6 @@ angular.module('odl').controller('device', function($scope, $rootScope, server) 
     $rootScope.$on('device', function(event, device) {
         $scope.device = device;
         $('#device-modal').foundation('reveal', 'open');
+        $(document).foundation();
     });
 });

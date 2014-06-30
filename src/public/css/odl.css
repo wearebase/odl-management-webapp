@@ -13,14 +13,20 @@ nav .fa-github {
 #devices-list a {
 	padding: 0px 10px 25px 10px;
 	display: block;
+    border-style: solid;
+    border-width: 1px;
+    border-color: white;
 }
 
 #devices-list .phone-wrap {
 	display: inline-block;
 }
 
-#devices-list a:hover {
-	background-color: #dddddd;
+#devices-list a:hover {	
+    border-style: solid;
+    border-width: 1px;
+    border-color: #dddddd;    
+    background: #eeeeee;
 }
 
 #devices-list .phone-wrap div {
@@ -40,6 +46,22 @@ nav .fa-github {
 	border-color: #007295;
 }
 
+.tabs {
+    border-bottom: solid 1px #dddddd;
+    border-left: solid 1px #dddddd;
+}
+
+.tab-title {
+    border: solid 1px #dddddd;
+    border-bottom: none;
+    border-left: none;
+}
+
+.tab-title.active {    
+    margin-bottom: -1px !important;
+    border-bottom: solid 1px white;
+}
+
 #devices-list h5 {
 	border-bottom: solid 1px #dddddd;
 	margin-bottom: 5px;
@@ -53,13 +75,36 @@ nav .fa-github {
 }
 
 #device-modal img {
-	width: 100px;
-	margin-bottom: 20px;
+	width: 160px;
+}
+
+#device-modal strong {
+	width: 160px;	
 }
 
 #device-modal h3 {
 	border-bottom: solid 1px #dddddd;
 	margin-bottom: 20px;
+}
+
+.tabs-content {
+    margin-bottom: 0;
+}
+
+.content {
+    padding-bottom: 0 !important;
+}
+
+#attrs-list {
+    height: 160px;
+    overflow-y: scroll;
+    margin-bottom: 0;
+}
+
+#attrs-list .row div {
+    padding: 5px;
+    text-overflow: ellipsis;
+    overflow: auto;
 }
 
 @media print {
