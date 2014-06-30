@@ -70,8 +70,7 @@ nav .fa-github {
 #devices img {
 	margin: 0 auto 0 auto;
 	display: block;
-	max-height: 250px;
-	max-width: 100px;
+	max-height: 230px;    
 }
 
 #device-modal img {
