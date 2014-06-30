@@ -1,7 +1,7 @@
 module.exports = {
     "/globalmine-server/v2/devices/imei/0:imei": {
         data: {
-            id: "25219",
+            id: "25216",
             brand: "Apple",
             name: "iPhone 4S",
             thumbnail: "http://www.clipartbest.com/cliparts/4c9/oqB/4c9oqBKcE.png",
@@ -10,7 +10,7 @@ module.exports = {
     },
     "/globalmine-server/v2/devices/imei/1:imei": {
         data: {
-            id: "25219",
+            id: "25217",
             brand: "Samsumg",
             name: "Galaxy S5 ",
             thumbnail: "http://www.clipartbest.com/cliparts/4c9/oqB/4c9oqBKcE.png",
@@ -19,7 +19,7 @@ module.exports = {
     },
     "/globalmine-server/v2/devices/imei/2:imei": {
         data: {
-            id: "25219",
+            id: "25218",
             brand: "Motorola",
             name: "Moto G",
             thumbnail: "http://www.clipartbest.com/cliparts/4c9/oqB/4c9oqBKcE.png",
@@ -28,14 +28,14 @@ module.exports = {
     },
     "/globalmine-server/v2/devices/imei/3:imei": {
         data: {
-            id: "25218",
+            id: "25219",
             brand: "Nokia",
             name: "Lumia 720",
             thumbnail: "http://www.clipartbest.com/cliparts/4c9/oqB/4c9oqBKcE.png",
             image: "http://www.esato.com/gfx/phones/gallery/nokia-lumia-720-front.jpg"
         }
     },
-    "/globalmine-server/v2/deviceAttributes/25218": {
+    "/globalmine-server/v2/deviceAttributes/25216": {
         data: [{
             name: "BrewEnabled",
             value: "No",
