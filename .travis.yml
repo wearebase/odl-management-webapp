@@ -6,6 +6,7 @@ notifications:
   slack: odl:vToYX9UxvZZxDNtSXYG6UzCT
 before_install: sudo apt-get install libcairo2-dev libjpeg8-dev libpango1.0-dev libgif-dev build-essential g++    
 deploy:
+  strategy: git
   provider: heroku
   api_key:
     secure: khUI0NsEe8v0+nfW5kCeuVwtt33dnTGYCPmMdAvVIXKHnOtyKTR3lJVG+3iG6NCAHtYp7rDtvWNss4FLN6I2rs70XsFumOm2MBnVzyhy1Ao86blAJTc/tgfPZjrf5pOAo4KoCr9PM7vQNiqzPZOi2qclb5XGGebnQSSTIocDEE0=
