@@ -10,8 +10,8 @@ module.exports = function(app) {
     app.del ('/api/device/:guid'   , controllers.device.deleteDeviceByGuid);
     app.get ('/api/device/:guid'   , controllers.device.getDeviceByGuid);
     
-    app.post('/api/check/in/:imei' , controllers.check.checkIn);
-    app.post('/api/check/out/:imei', controllers.check.checkOut);
+    app.post('/api/check/in/:guid' , controllers.check.checkIn);
+    app.post('/api/check/out/:guid', controllers.check.checkOut);
     
     app.get ('/api/qr'             , controllers.qr.getAllQRs);
     app.post('/api/qr'             , controllers.qr.newQR);

@@ -3,7 +3,7 @@ var config = require('config');
 var Device = rekuire('src/models/device');
 
 module.exports.checkIn = function(req, res) {
-    Device.findOne({imei: req.param('imei')}, function(err, device) {
+    Device.findOne({guid: req.param('guid')}, function(err, device) {
         if (err || !device) {
             res.send(404);
         } else {
@@ -20,7 +20,7 @@ module.exports.checkIn = function(req, res) {
 }
 
 module.exports.checkOut = function(req, res) {
-    Device.findOne({imei: req.param('imei')}, function(err, device) {
+    Device.findOne({guid: req.param('guid')}, function(err, device) {
         if (err || !device) {
             res.send(404);
         } else {
