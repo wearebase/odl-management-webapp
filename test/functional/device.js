@@ -35,6 +35,21 @@ describe("Device API", function () {
         });
     });
 
+    it("should create a new device and retrieve it with an autogenerted GUID", function (done) {
+        var args = {
+            data: { imei: "312345678912345"},
+            headers:{"Content-Type": "application/json"}
+        };
+        app.http.post(app.url('/api/device'), args, function(data, response) {
+            expect(response.statusCode).to.equal(200);
+            expect(data).to.have.property('imei').and.equal('312345678912345');
+            expect(data).to.have.property('guid').and.match(/[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}/);
+            expect(data).to.have.property('_id');
+            expect(data).to.have.property('modified');
+            done();
+        });
+    });
+
     it("should update and existing device if we send one with the same guid", function (done) {
         var args = {
             data: { guid: "00000000-0000-0000-0000-000000000002", modified: '2014-03-25T15:19:55.052Z' },

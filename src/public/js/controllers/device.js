@@ -1,13 +1,13 @@
 angular.module('odl').controller('device', function($scope, $rootScope, server) {
     $scope.delete = function() {
-        server.deleteDevice($scope.device.imei).success(function() {
+        server.deleteDevice($scope.device.guid).success(function() {
             $('#device-modal').foundation('reveal', 'close');
             $rootScope.$emit('refresh');
         });
     }
 
     $scope.check = function() {
-        server.checkDevice(!$scope.device.checkedIn, $scope.device.imei).success(function() {
+        server.checkDevice(!$scope.device.checkedIn, $scope.device.guid).success(function() {
             $scope.device.checkedIn = !$scope.device.checkedIn
             $rootScope.$emit('refresh');
         });

@@ -7,12 +7,12 @@ angular.module('odl').service('server', function ($rootScope, $http) {
         return $http.post('/api/device', {imei: imei});
     } 
 
-    this.deleteDevice = function(imei) {
-        return $http.delete('/api/device/' + imei);
+    this.deleteDevice = function(guid) {
+        return $http.delete('/api/device/' + guid);
     }
 
-    this.checkDevice = function(state, imei) {
-        return $http.post('/api/check/' + (state ? 'in' : 'out') + '/' + imei);
+    this.checkDevice = function(state, guid) {
+        return $http.post('/api/check/' + (state ? 'in' : 'out') + '/' + guid);
     }
 
     this.getQRs = function() {
