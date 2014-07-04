@@ -8,6 +8,7 @@ var request = require('request');
 var Canvas = new require('canvas');
 var qrcode = require('qrcode');
 var fs = require('fs');
+var uuid = require('node-uuid');
 
 module.exports.getAllDevices = function(req, res) {
     Device.find({}).sort({imei: 1}).exec(function(err, devices) {
@@ -16,6 +17,7 @@ module.exports.getAllDevices = function(req, res) {
 }
 
 module.exports.newDevice = function(req, res) {
+    req.body.guid = req.body.guid || uuid.v4();
     Device.findOne({guid: req.body.guid}, function(err, device) {
         if (device) {
             _.extend(device, req.body);
