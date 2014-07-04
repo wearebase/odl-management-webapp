@@ -8,14 +8,14 @@ describe("ODL Website", function () {
 
     it("should load the demo page", function (done) {
         app.http.get(app.url('/'), function(data, response) {
-            expect(data).to.contain('Open Device Lab Management App');
+            expect(data).to.contain('Open Device Lab');
             done();
         });           
     });
 
     it("should load the qrs page", function (done) {
         app.http.get(app.url('/qrs.html'), function(data, response) {
-            expect(data).to.contain('Open Device Lab Management App');
+            expect(data).to.contain('Open Device Lab');
             done();
         });           
     });   

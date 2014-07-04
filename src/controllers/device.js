@@ -16,7 +16,7 @@ module.exports.getAllDevices = function(req, res) {
 }
 
 module.exports.newDevice = function(req, res) {
-    Device.findOne({imei: req.body.imei}, function(err, device) {
+    Device.findOne({guid: req.body.guid}, function(err, device) {
         if (device) {
             _.extend(device, req.body);
             device.save(function (err, device) {
@@ -25,7 +25,6 @@ module.exports.newDevice = function(req, res) {
         } else {
             args = { parameters:{ k: config.GMAPI.key, z: config.GMAPI.secret } };
             rest.get(config.GMAPI.url + 'devices/imei/' + req.body.imei, args, function(gmDevice, response) {
-                console.log(gmDevice);
                 if (response.statusCode != 200) {
                     res.send(response.statusCode);
                     return;
@@ -50,8 +49,8 @@ module.exports.newDevice = function(req, res) {
     });
 }
 
-module.exports.deleteDeviceByImei = function(req, res) {
-    Device.findOne({imei: req.param('imei')}, function(err, device) {
+module.exports.deleteDeviceByGuid = function(req, res) {
+    Device.findOne({guid: req.param('guid')}, function(err, device) {
         if (device) {
             device.remove(function (err, device) {
                 res.send(err ? 404 : device);
@@ -62,8 +61,8 @@ module.exports.deleteDeviceByImei = function(req, res) {
     });
 }
 
-module.exports.getDeviceByImei = function(req, res) {
-    Device.findOne({imei: req.param('imei')}, function(err, device) {
+module.exports.getDeviceByGuid = function(req, res) {
+    Device.findOne({guid: req.param('guid')}, function(err, device) {
         res.send(device ? device : 404);
     });
 }

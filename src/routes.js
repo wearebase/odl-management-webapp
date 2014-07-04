@@ -7,8 +7,8 @@ module.exports = function(app) {
     
     app.get ('/api/device'         , controllers.device.getAllDevices);
     app.post('/api/device'         , controllers.device.newDevice);
-    app.del ('/api/device/:imei'   , controllers.device.deleteDeviceByImei);
-    app.get ('/api/device/:imei'   , controllers.device.getDeviceByImei);
+    app.del ('/api/device/:guid'   , controllers.device.deleteDeviceByGuid);
+    app.get ('/api/device/:guid'   , controllers.device.getDeviceByGuid);
     
     app.post('/api/check/in/:imei' , controllers.check.checkIn);
     app.post('/api/check/out/:imei', controllers.check.checkOut);
